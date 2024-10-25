@@ -1,0 +1,131 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 15px;
+  color: #fff;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .nav-links li {
+  display: inline;
+  margin-right: 15px;
+}
+
+.navbar .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.hero-content button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+/* Popular & Showcase Sections */
+.popular-books,
+.showcase-books {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.books-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.book-card {
+  width: 200px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.showcase {
+  border: 2px solid #333;
+}
+
+/* Plans Section */
+.plans {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.plans-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.plan-card {
+  width: 200px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.testimonial-card {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-links li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.footer-links li a {
+  color: #fff;
+  text-decoration: none;
+}

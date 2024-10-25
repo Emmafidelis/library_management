@@ -22,6 +22,10 @@ app_license = "mit"
 # ]
 
 # Includes in <head>
+website_route_rules = [
+    {"from_route": "/landing", "to_route": "landing"}
+]
+
 # ------------------
 
 # include js, css files in header of desk.html
