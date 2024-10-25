@@ -178,9 +178,10 @@ web_include_js = "/assets/library_management/js/landing.js"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "library_management.event.get_events"
-# }
+override_whitelisted_methods = {
+  "library_management.api.get_books": "library_management.api.get_books"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
