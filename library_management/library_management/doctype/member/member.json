@@ -48,13 +48,15 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-25 14:46:48.396443",
+ "modified": "2024-10-25 15:05:46.943901",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",
  "owner": "Administrator",
  "permissions": [],
+ "quick_entry": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
