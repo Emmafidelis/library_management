@@ -129,3 +129,52 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
+/* Search and Filter Section */
+.search-section {
+  padding: 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.search-container {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.search-container input[type="text"],
+.search-container select {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+/* Pagination Controls */
+.pagination {
+  padding: 20px;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 10px 15px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination-controls span {
+  font-size: 1em;
+}

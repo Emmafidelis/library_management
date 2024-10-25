@@ -33,7 +33,7 @@ website_route_rules = [
 # app_include_js = "/assets/library_management/js/library_management.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/library_management/css/library_management.css"
+web_include_css = "/assets/library_management/css/landing.css"
 # web_include_js = "/assets/library_management/js/library_management.js"
 
 # include custom scss in every website theme (without file extension ".scss")
