@@ -1,18 +1,22 @@
-let currentPage = 1;
-const pageSize = 10;
+const booksContainer = document.getElementById("books-container");
+const messageContainer = document.getElementById("message-container");
 
 function searchBooks() {
   const searchQuery = document.getElementById("search-input").value;
   const category = document.getElementById("category-filter").value;
+  const currentPage = 1;
 
-  fetch(`/api/method/library_management.library_management.api.get_books?search=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(category)}&page=${currentPage}&page_size=${pageSize}`)
+  booksContainer.innerHTML = "";
+  messageContainer.innerHTML = "";
+
+  fetch(`/api/method/library_management.library_management.api.get_books?search=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(category)}&page=${currentPage}&page_size=10`)
     .then(response => response.json())
     .then(data => {
-      if (data && data.message) {
-        displayBooks(data.message.books);
-        updatePagination(data.message.current_page, data.message.total_pages);
+      if (data && data.books && data.books.length > 0) {
+        displayBooks(data.books);
+        updatePagination(currentPage, data.total_pages);
       } else {
-        console.error("Failed to fetch books data");
+        messageContainer.innerHTML = "<p>The book you're searching for is not available.</p>";
       }
     })
     .catch(error => {
