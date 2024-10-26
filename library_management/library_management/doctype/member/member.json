@@ -10,7 +10,9 @@
   "email",
   "phone_number",
   "membership_date",
-  "coupon_code"
+  "coupon_code",
+  "username",
+  "password"
  ],
  "fields": [
   {
@@ -44,11 +46,21 @@
    "in_list_view": 1,
    "label": "Coupon Code",
    "reqd": 1
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Username"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-25 15:05:46.943901",
+ "modified": "2024-10-26 11:28:20.104894",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",
