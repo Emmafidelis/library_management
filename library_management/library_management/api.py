@@ -1,6 +1,7 @@
 # library_management_system/library_management_system/api.py
 
 import frappe
+from frappe import _
 import math
 
 @frappe.whitelist(allow_guest=True)
@@ -40,3 +41,18 @@ def get_books(search=None, category=None, page=1, page_size=10):
     return {
       "error": "An error occurred while fetching books."
     }
+
+
+@frappe.whitelist(allow_guest=True)
+def login(username, password):
+  member = frappe.db.get_value("Member", {"username": username}, ["name", "password"])
+
+  if member:
+    member_name, stored_password = member
+    if stored_password == password:
+      return {"status": "success", "message": _("Login successful"), "member_name": member_name}
+    else:
+      return {"status": "failed", "message": _("Incorrect password")}
+  else:
+    return {"status": "failed", "message": _("User not found")}
+
