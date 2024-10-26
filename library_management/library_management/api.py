@@ -44,15 +44,14 @@ def get_books(search=None, category=None, page=1, page_size=10):
 
 
 @frappe.whitelist(allow_guest=True)
-def login(username, password):
-  member = frappe.db.get_value("Member", {"username": username}, ["name", "password"])
-
-  if member:
-    member_name, stored_password = member
-    if stored_password == password:
-      return {"status": "success", "message": _("Login successful"), "member_name": member_name}
+def login_user(username, password):
+  try:
+    user = frappe.get_doc("User", username)
+    if user and user.check_password(password):
+      frappe.local.login_manager.login_as(username)
+      return {"message": _("Login successful")}
     else:
-      return {"status": "failed", "message": _("Incorrect password")}
-  else:
-    return {"status": "failed", "message": _("User not found")}
+      return {"message": _("Invalid username or password")}
+  except Exception as e:
+    return {"message": _("An error occurred: " + str(e))}
 
