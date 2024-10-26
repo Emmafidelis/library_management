@@ -1,7 +1,9 @@
 const booksContainer = document.getElementById("books-container");
 const messageContainer = document.getElementById("message-container");
 
-function searchBooks() {
+function searchBooks(event) {
+  event.preventDefault();
+
   const searchQuery = document.getElementById("search-input").value;
   const category = document.getElementById("category-filter").value;
   const currentPage = 1;
@@ -18,6 +20,9 @@ function searchBooks() {
       } else {
         messageContainer.innerHTML = "<p>The book you're searching for is not available.</p>";
       }
+
+      document.getElementById("search-input").value = "";
+      document.getElementById("category-select").value = "";
     })
     .catch(error => {
       console.error("Error fetching data:", error);

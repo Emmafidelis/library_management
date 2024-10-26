@@ -27,7 +27,7 @@
     </div>
   </section>
 
-  <section class="search-section">
+  <form class="search-section" onsubmit="searchBooks(event)">
     <div class="search-container">
       <input type="text" id="search-input" placeholder="Search for books...">
       <select id="category-filter">
@@ -37,12 +37,13 @@
         <option value="science">Science</option>
         <option value="history">History</option>
       </select>
-      <button onclick="searchBooks()">Search</button>
+      <button type="submit">Search</button>
     </div>
-    <div id="message-container"></div>
+  </form>
 
-    <div id="books-container"></div>
-  </section>
+  <div id="message-container"></div>
+
+  <div id="books-container"></div>
 
   <section class="popular-books">
     <h2>Popular Books</h2>
