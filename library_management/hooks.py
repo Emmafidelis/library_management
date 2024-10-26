@@ -179,7 +179,7 @@ web_include_js = "/assets/library_management/js/landing.js"
 # ------------------------------
 #
 override_whitelisted_methods = {
-  "library_management.api.get_books": "library_management.api.get_books"
+  "library_management.library_management.api.get_books": "library_management.library_management.api.get_books"
 }
 
 #

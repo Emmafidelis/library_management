@@ -5,7 +5,7 @@ function searchBooks() {
   const searchQuery = document.getElementById("search-input").value;
   const category = document.getElementById("category-filter").value;
 
-  fetch(`/api/method/library_management.api.get_books?search=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(category)}&page=${currentPage}&page_size=${pageSize}`)
+  fetch(`/api/method/library_management.library_management.api.get_books?search=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(category)}&page=${currentPage}&page_size=${pageSize}`)
     .then(response => response.json())
     .then(data => {
       if (data && data.message) {

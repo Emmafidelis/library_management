@@ -13,7 +13,8 @@ def get_books(search=None, category=None, page=1, page_size=10):
   if category:
     filters["category"] = category
 
-  books = frappe.get_all("Book", fields=["title", "author", "category"], filters=filters, limit_start=offset, limit_page_length=page_size)
+  books = frappe.get_all("Book", fields=["title", "author", "category"],
+  filters=filters, limit_start=offset, limit_page_length=page_size)
 
   total_books = frappe.db.count("Book", filters=filters)
   total_pages = math.ceil(total_books / page_size)

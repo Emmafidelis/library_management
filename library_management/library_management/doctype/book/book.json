@@ -7,20 +7,13 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "book_name",
+  "title",
   "author",
   "isbn",
   "category",
   "status"
  ],
  "fields": [
-  {
-   "fieldname": "book_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Book Name",
-   "reqd": 1
-  },
   {
    "fieldname": "author",
    "fieldtype": "Data",
@@ -44,11 +37,18 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "\nAvailable\nIssued\nDamaged"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-25 12:41:48.151191",
+ "modified": "2024-10-26 09:46:27.177497",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book",
