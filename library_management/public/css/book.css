@@ -1,0 +1,126 @@
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Navigation Bar */
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  background-color: #333;
+  padding: 10px;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Search Section */
+#search-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#searchInput,
+#categorySelect {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#searchInput {
+  width: 300px;
+}
+
+#search-section button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#search-section button:hover {
+  background-color: #555;
+}
+
+/* Message Container */
+#messageContainer {
+  text-align: center;
+  margin: 10px;
+  font-weight: bold;
+}
+
+/* Books List Section */
+#booksList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.book-item {
+  background-color: #fff;
+  padding: 15px;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-item h3 {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.book-item p {
+  margin: 5px 0;
+}
+
+.book-item button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-item button:hover {
+  background-color: #555;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

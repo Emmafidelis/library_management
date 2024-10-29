@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Page</title>
+    <link rel="stylesheet" href="/assets/library_management/css/book.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/landing">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/book">Books</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Explore Our Book Collection</h1>
+  <section id="search-section">
+    <input type="text" id="searchInput" placeholder="Search for books...">
+    <select id="categorySelect">
+      <option value="">All Categories</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Non-Fiction">Non-Fiction</option>
+    </select>
+    <button onclick="fetchBooks()">Search</button>
+  </section>
+
+  <div id="messageContainer"></div>
+
+  <section id="booksList">
+  </section>
+  <footer>
+    <p>&copy; 2024 Library Management System</p>
+  </footer>
+
+  <script src="/assets/library_management/js/book.js"></script>
+</body>
+</html>
