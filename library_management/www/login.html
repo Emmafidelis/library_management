@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Login</title>
+    <title>Library Management System - Login</title>
     <link rel="stylesheet" href="/assets/library_management/css/login.css">
 </head>
-<body>
+  <body>
+    <div class="login-container">
+      <h2>Login to Library</h2>
+      <form id="loginForm">
+        <label class="form-label" for="username">Username:</label>
+        <input class="form-input" type="text" id="username" name="username" required>
 
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="login-form">
-      <label class="form-label" for="username">Username</label>
-      <input class="form-input" type="text" id="username" required>
-      
-      <label class="form-label" for="password">Password</label>
-      <input class="form-input" type="password" id="password" required>
-      
-      <button class="btn" type="submit">Login</button>
-    </form>
-    <div id="message-container"></div>
-  </div>
+        <label class="form-label" for="password">Password:</label>
+        <input class="form-input" type="password" id="password" name="password" required>
 
-  <script src="/assets/library_management/js/login.js"></script>
-</body>
+        <button class="btn" type="submit">Login</button>
+        <div id="loginMessage" class="message"></div>
+      </form>
+    </div>
+
+    <script src="/assets/library_management/js/login.js"></script>
+  </body>
 </html>
+
