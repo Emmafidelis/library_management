@@ -44,26 +44,4 @@ function displayBooks(books) {
   });
 }
 
-function borrowBook(bookId) {
-  const memberId = 'YOUR_MEMBER_ID';
 
-  fetch(`/api/method/library_management.api.borrow_book`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ book_id: bookId, member_id: memberId })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.coupon_code) {
-      messageContainer.innerHTML = `Coupon Code: ${data.coupon_code}`;
-      messageContainer.style.color = 'green';
-    } else {
-      messageContainer.innerHTML = data.message || 'Failed to borrow the book.';
-      messageContainer.style.color = 'red';
-    }
-  })
-  .catch(error => {
-    console.error('Error borrowing book:', error);
-    messageContainer.innerHTML = 'An error occurred. Please try again.';
-  });
-}
