@@ -1,0 +1,426 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LIB-EVT-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "event_details_section",
+  "event_name",
+  "event_type",
+  "event_category",
+  "event_date",
+  "column_break_1",
+  "start_time",
+  "end_time",
+  "duration_hours",
+  "status",
+  "venue_section",
+  "venue",
+  "room_number",
+  "capacity",
+  "column_break_2",
+  "is_virtual",
+  "virtual_link",
+  "equipment_required",
+  "organizer_section",
+  "organizer",
+  "contact_person",
+  "contact_email",
+  "column_break_3",
+  "contact_phone",
+  "external_speaker",
+  "speaker_details",
+  "registration_section",
+  "registration_required",
+  "registration_fee",
+  "max_participants",
+  "column_break_4",
+  "registration_deadline",
+  "current_registrations",
+  "waiting_list_count",
+  "content_section",
+  "description",
+  "agenda",
+  "column_break_5",
+  "target_audience",
+  "prerequisites",
+  "materials_provided",
+  "promotion_section",
+  "promotional_image",
+  "social_media_links",
+  "column_break_6",
+  "website_published",
+  "featured_event",
+  "tags",
+  "feedback_section",
+  "feedback_form_link",
+  "average_rating",
+  "total_feedback",
+  "column_break_7",
+  "attendance_count",
+  "completion_rate",
+  "follow_up_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_details_section",
+   "fieldtype": "Section Break",
+   "label": "Event Details"
+  },
+  {
+   "fieldname": "event_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Event Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Event Type",
+   "options": "\nWorkshop\nSeminar\nBook Club\nReading Session\nAuthor Talk\nBook Launch\nExhibition\nConference\nTraining\nCompetition\nCultural Program\nEducational Program",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "\nEducational\nCultural\nTechnical\nLiterary\nChildren\nAdult\nSenior\nProfessional\nAcademic\nRecreational"
+  },
+  {
+   "fieldname": "event_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Event Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "duration_hours",
+   "fieldtype": "Float",
+   "label": "Duration (Hours)",
+   "read_only": 1
+  },
+  {
+   "default": "Planned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nPlanned\nOpen for Registration\nFull\nIn Progress\nCompleted\nCancelled\nPostponed"
+  },
+  {
+   "fieldname": "venue_section",
+   "fieldtype": "Section Break",
+   "label": "Venue Details"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Data",
+   "label": "Venue",
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Venue Capacity"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_virtual",
+   "fieldtype": "Check",
+   "label": "Virtual Event"
+  },
+  {
+   "depends_on": "is_virtual",
+   "fieldname": "virtual_link",
+   "fieldtype": "Data",
+   "label": "Virtual Meeting Link"
+  },
+  {
+   "fieldname": "equipment_required",
+   "fieldtype": "Text",
+   "label": "Equipment Required"
+  },
+  {
+   "fieldname": "organizer_section",
+   "fieldtype": "Section Break",
+   "label": "Organizer Information"
+  },
+  {
+   "fieldname": "organizer",
+   "fieldtype": "Link",
+   "label": "Organizer",
+   "options": "User"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone"
+  },
+  {
+   "default": "0",
+   "fieldname": "external_speaker",
+   "fieldtype": "Check",
+   "label": "External Speaker"
+  },
+  {
+   "depends_on": "external_speaker",
+   "fieldname": "speaker_details",
+   "fieldtype": "Text",
+   "label": "Speaker Details"
+  },
+  {
+   "fieldname": "registration_section",
+   "fieldtype": "Section Break",
+   "label": "Registration Details"
+  },
+  {
+   "default": "1",
+   "fieldname": "registration_required",
+   "fieldtype": "Check",
+   "label": "Registration Required"
+  },
+  {
+   "depends_on": "registration_required",
+   "fieldname": "registration_fee",
+   "fieldtype": "Currency",
+   "label": "Registration Fee"
+  },
+  {
+   "depends_on": "registration_required",
+   "fieldname": "max_participants",
+   "fieldtype": "Int",
+   "label": "Max Participants"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "registration_required",
+   "fieldname": "registration_deadline",
+   "fieldtype": "Date",
+   "label": "Registration Deadline"
+  },
+  {
+   "default": "0",
+   "fieldname": "current_registrations",
+   "fieldtype": "Int",
+   "label": "Current Registrations",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "waiting_list_count",
+   "fieldtype": "Int",
+   "label": "Waiting List Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Content & Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "agenda",
+   "fieldtype": "Text Editor",
+   "label": "Agenda"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_audience",
+   "fieldtype": "Text",
+   "label": "Target Audience"
+  },
+  {
+   "fieldname": "prerequisites",
+   "fieldtype": "Text",
+   "label": "Prerequisites"
+  },
+  {
+   "fieldname": "materials_provided",
+   "fieldtype": "Text",
+   "label": "Materials Provided"
+  },
+  {
+   "fieldname": "promotion_section",
+   "fieldtype": "Section Break",
+   "label": "Promotion & Marketing"
+  },
+  {
+   "fieldname": "promotional_image",
+   "fieldtype": "Attach Image",
+   "label": "Promotional Image"
+  },
+  {
+   "fieldname": "social_media_links",
+   "fieldtype": "Text",
+   "label": "Social Media Links"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "website_published",
+   "fieldtype": "Check",
+   "label": "Published on Website"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured_event",
+   "fieldtype": "Check",
+   "label": "Featured Event"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Data",
+   "label": "Tags"
+  },
+  {
+   "fieldname": "feedback_section",
+   "fieldtype": "Section Break",
+   "label": "Feedback & Analytics"
+  },
+  {
+   "fieldname": "feedback_form_link",
+   "fieldtype": "Data",
+   "label": "Feedback Form Link"
+  },
+  {
+   "fieldname": "average_rating",
+   "fieldtype": "Float",
+   "label": "Average Rating",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_feedback",
+   "fieldtype": "Int",
+   "label": "Total Feedback Received",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "attendance_count",
+   "fieldtype": "Int",
+   "label": "Actual Attendance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completion_rate",
+   "fieldtype": "Percent",
+   "label": "Completion Rate",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "Follow-up Required"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Library Event",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "event_name,event_type,event_category,status"
+}

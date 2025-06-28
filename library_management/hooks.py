@@ -23,7 +23,15 @@ app_license = "mit"
 
 # Includes in <head>
 website_route_rules = [
-    {"from_route": "/landing", "to_route": "landing"}
+    {"from_route": "/landing", "to_route": "landing"},
+    {"from_route": "/dashboard", "to_route": "dashboard"},
+    {"from_route": "/member-portal", "to_route": "member_portal"},
+    {"from_route": "/books", "to_route": "book"},
+    {"from_route": "/members", "to_route": "members"},
+    {"from_route": "/transactions", "to_route": "transactions"},
+    {"from_route": "/reports", "to_route": "reports"},
+    {"from_route": "/events", "to_route": "events"},
+    {"from_route": "/digital-library", "to_route": "digital_library"}
 ]
 
 # ------------------
@@ -33,8 +41,16 @@ website_route_rules = [
 # app_include_js = "/assets/library_management/js/library_management.js"
 
 # include js, css files in header of web template
-web_include_css = "/assets/library_management/css/landing.css"
-web_include_js = "/assets/library_management/js/landing.js"
+web_include_css = [
+    "/assets/library_management/css/landing.css",
+    "/assets/library_management/css/dashboard.css",
+    "/assets/library_management/css/member_portal.css"
+]
+web_include_js = [
+    "/assets/library_management/js/landing.js",
+    "/assets/library_management/js/dashboard.js",
+    "/assets/library_management/js/member_portal.js"
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "library_management/public/scss/website"
@@ -87,7 +103,8 @@ web_include_js = "/assets/library_management/js/landing.js"
 # ------------
 
 # before_install = "library_management.install.before_install"
-# after_install = "library_management.install.after_install"
+after_install = "library_management.install.after_install"
+before_uninstall = "library_management.install.before_uninstall"
 
 # Uninstallation
 # ------------
@@ -152,23 +169,20 @@ web_include_js = "/assets/library_management/js/landing.js"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"library_management.tasks.all"
-# 	],
-# 	"daily": [
-# 		"library_management.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"library_management.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"library_management.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"library_management.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"library_management.library_management.tasks.send_due_date_reminders",
+		"library_management.library_management.tasks.mark_overdue_books",
+		"library_management.library_management.tasks.expire_reservations"
+	],
+	"weekly": [
+		"library_management.library_management.tasks.send_overdue_reminders",
+		"library_management.library_management.tasks.update_member_statistics"
+	],
+	"monthly": [
+		"library_management.library_management.tasks.generate_monthly_reports"
+	],
+}
 
 # Testing
 # -------
@@ -179,7 +193,18 @@ web_include_js = "/assets/library_management/js/landing.js"
 # ------------------------------
 #
 override_whitelisted_methods = {
-  "library_management.library_management.api.get_books": "library_management.library_management.api.get_books"
+    "library_management.library_management.api.get_books": "library_management.library_management.api.get_books",
+    "library_management.library_management.api.get_library_analytics": "library_management.library_management.api.get_library_analytics",
+    "library_management.library_management.api.issue_book": "library_management.library_management.api.issue_book",
+    "library_management.library_management.api.return_book": "library_management.library_management.api.return_book",
+    "library_management.library_management.api.renew_book": "library_management.library_management.api.renew_book",
+    "library_management.library_management.api.get_member_dashboard": "library_management.library_management.api.get_member_dashboard",
+    "library_management.library_management.api.search_members": "library_management.library_management.api.search_members",
+    "library_management.library_management.api.generate_library_report": "library_management.library_management.api.generate_library_report",
+    "library_management.library_management.api.get_digital_resources": "library_management.library_management.api.get_digital_resources",
+    "library_management.library_management.api.access_digital_resource": "library_management.library_management.api.access_digital_resource",
+    "library_management.library_management.api.get_library_events": "library_management.library_management.api.get_library_events",
+    "library_management.library_management.api.register_for_event": "library_management.library_management.api.register_for_event"
 }
 
 #

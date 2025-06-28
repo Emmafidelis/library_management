@@ -1,0 +1,383 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LIB-DIG-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "title",
+  "author",
+  "resource_type",
+  "category",
+  "column_break_1",
+  "isbn",
+  "doi",
+  "language",
+  "publication_date",
+  "file_details_section",
+  "file_attachment",
+  "file_size",
+  "file_format",
+  "column_break_2",
+  "external_url",
+  "access_type",
+  "license_type",
+  "download_allowed",
+  "access_control_section",
+  "access_level",
+  "member_types_allowed",
+  "max_concurrent_users",
+  "column_break_3",
+  "access_duration_days",
+  "requires_approval",
+  "approval_required_from",
+  "content_details_section",
+  "description",
+  "keywords",
+  "column_break_4",
+  "publisher",
+  "edition",
+  "pages",
+  "statistics_section",
+  "total_downloads",
+  "total_views",
+  "current_active_users",
+  "column_break_5",
+  "average_rating",
+  "total_ratings",
+  "last_accessed",
+  "metadata_section",
+  "metadata_json",
+  "thumbnail",
+  "column_break_6",
+  "status",
+  "created_by",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Author",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resource_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Resource Type",
+   "options": "\nE-book\nAudiobook\nVideo\nDocument\nJournal Article\nResearch Paper\nThesis\nPresentation\nDataset\nSoftware",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "\nFiction\nNon-Fiction\nScience\nTechnology\nHistory\nBiography\nEducational\nReference\nChildren\nYoung Adult\nAcademic\nProfessional"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "isbn",
+   "fieldtype": "Data",
+   "label": "ISBN"
+  },
+  {
+   "fieldname": "doi",
+   "fieldtype": "Data",
+   "label": "DOI"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "\nEnglish\nSpanish\nFrench\nGerman\nItalian\nPortuguese\nRussian\nChinese\nJapanese\nArabic\nHindi\nOther"
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Date",
+   "label": "Publication Date"
+  },
+  {
+   "fieldname": "file_details_section",
+   "fieldtype": "Section Break",
+   "label": "File Details"
+  },
+  {
+   "fieldname": "file_attachment",
+   "fieldtype": "Attach",
+   "label": "File Attachment"
+  },
+  {
+   "fieldname": "file_size",
+   "fieldtype": "Data",
+   "label": "File Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "file_format",
+   "fieldtype": "Select",
+   "label": "File Format",
+   "options": "\nPDF\nEPUB\nMOBI\nMP3\nMP4\nDOCX\nPPTX\nXLSX\nTXT\nHTML\nOther"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "external_url",
+   "fieldtype": "Data",
+   "label": "External URL"
+  },
+  {
+   "fieldname": "access_type",
+   "fieldtype": "Select",
+   "label": "Access Type",
+   "options": "\nFree\nPaid\nSubscription\nLimited\nRestricted"
+  },
+  {
+   "fieldname": "license_type",
+   "fieldtype": "Select",
+   "label": "License Type",
+   "options": "\nPublic Domain\nCreative Commons\nCopyright\nOpen Access\nProprietaryLimited Use"
+  },
+  {
+   "default": "1",
+   "fieldname": "download_allowed",
+   "fieldtype": "Check",
+   "label": "Download Allowed"
+  },
+  {
+   "fieldname": "access_control_section",
+   "fieldtype": "Section Break",
+   "label": "Access Control"
+  },
+  {
+   "default": "Public",
+   "fieldname": "access_level",
+   "fieldtype": "Select",
+   "label": "Access Level",
+   "options": "\nPublic\nMembers Only\nFaculty Only\nStudents Only\nRestricted\nAdmin Only"
+  },
+  {
+   "fieldname": "member_types_allowed",
+   "fieldtype": "Text",
+   "label": "Member Types Allowed"
+  },
+  {
+   "fieldname": "max_concurrent_users",
+   "fieldtype": "Int",
+   "label": "Max Concurrent Users"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "access_duration_days",
+   "fieldtype": "Int",
+   "label": "Access Duration (Days)"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_approval",
+   "fieldtype": "Check",
+   "label": "Requires Approval"
+  },
+  {
+   "depends_on": "requires_approval",
+   "fieldname": "approval_required_from",
+   "fieldtype": "Link",
+   "label": "Approval Required From",
+   "options": "User"
+  },
+  {
+   "fieldname": "content_details_section",
+   "fieldtype": "Section Break",
+   "label": "Content Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "keywords",
+   "fieldtype": "Data",
+   "label": "Keywords"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Data",
+   "label": "Publisher"
+  },
+  {
+   "fieldname": "edition",
+   "fieldtype": "Data",
+   "label": "Edition"
+  },
+  {
+   "fieldname": "pages",
+   "fieldtype": "Int",
+   "label": "Number of Pages"
+  },
+  {
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Usage Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_downloads",
+   "fieldtype": "Int",
+   "label": "Total Downloads",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_views",
+   "fieldtype": "Int",
+   "label": "Total Views",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "current_active_users",
+   "fieldtype": "Int",
+   "label": "Current Active Users",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "average_rating",
+   "fieldtype": "Float",
+   "label": "Average Rating",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_ratings",
+   "fieldtype": "Int",
+   "label": "Total Ratings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_accessed",
+   "fieldtype": "Datetime",
+   "label": "Last Accessed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "metadata_json",
+   "fieldtype": "JSON",
+   "label": "Additional Metadata"
+  },
+  {
+   "fieldname": "thumbnail",
+   "fieldtype": "Attach Image",
+   "label": "Thumbnail"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nDraft\nPending Approval\nApproved\nPublished\nArchived\nRestricted"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Digital Resource",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "title,author,resource_type,category"
+}
