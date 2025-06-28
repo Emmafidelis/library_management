@@ -651,3 +651,413 @@ def register_for_event(event_name, member_name=None, notes=None):
 		frappe.log_error(f"Error registering for event: {str(e)}")
 		return {"success": False, "error": "An error occurred while registering for the event."}
 
+
+@frappe.whitelist()
+def get_smart_recommendations(member_name=None, recommendation_type=None, limit=10):
+	"""Get AI-powered smart recommendations for a member"""
+	try:
+		if not member_name:
+			user = frappe.session.user
+			member_name = frappe.db.get_value("Member", {"user": user}, "name")
+			if not member_name:
+				return {"success": False, "message": "No member record found for current user"}
+
+		filters = {"member": member_name, "status": "Active"}
+		if recommendation_type:
+			filters["recommendation_type"] = recommendation_type
+
+		recommendations = frappe.get_all(
+			"Smart Recommendation",
+			filters=filters,
+			fields=[
+				"name", "recommendation_type", "confidence_score", "generated_date",
+				"reason_for_recommendation", "recommended_books"
+			],
+			limit=int(limit),
+			order_by="confidence_score desc, generated_date desc"
+		)
+
+		# Get detailed book information for each recommendation
+		for rec in recommendations:
+			if rec.recommended_books:
+				book_data = frappe.get_doc("Smart Recommendation", rec.name)
+				rec.books = []
+				for book_item in book_data.recommended_books:
+					book = frappe.get_doc("Book", book_item.book)
+					rec.books.append({
+						"name": book.name,
+						"title": book.title,
+						"author": book.author,
+						"category": book.category,
+						"available_copies": book.available_copies,
+						"recommendation_score": book_item.recommendation_score
+					})
+
+		return {
+			"success": True,
+			"recommendations": recommendations,
+			"total_recommendations": len(recommendations)
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error getting smart recommendations: {str(e)}")
+		return {"success": False, "error": "An error occurred while fetching recommendations."}
+
+
+@frappe.whitelist()
+def generate_personalized_recommendations(member_name, algorithm="hybrid"):
+	"""Generate new personalized recommendations using AI"""
+	try:
+		member = frappe.get_doc("Member", member_name)
+
+		# Get member's reading history
+		reading_history = frappe.get_all(
+			"Library Transaction",
+			filters={
+				"member": member_name,
+				"transaction_type": "Issue",
+				"status": ["in", ["Returned", "Active"]]
+			},
+			fields=["book", "transaction_date"],
+			order_by="transaction_date desc",
+			limit=50
+		)
+
+		# Analyze reading patterns
+		genres = {}
+		authors = {}
+		for transaction in reading_history:
+			book = frappe.get_doc("Book", transaction.book)
+			genres[book.category] = genres.get(book.category, 0) + 1
+			authors[book.author] = authors.get(book.author, 0) + 1
+
+		# Find similar members
+		similar_members = find_similar_members(member_name, reading_history)
+
+		# Generate recommendations based on algorithm
+		if algorithm == "collaborative":
+			recommended_books = collaborative_filtering(member_name, similar_members)
+		elif algorithm == "content_based":
+			recommended_books = content_based_filtering(genres, authors)
+		else:  # hybrid
+			collab_books = collaborative_filtering(member_name, similar_members)
+			content_books = content_based_filtering(genres, authors)
+			recommended_books = merge_recommendations(collab_books, content_books)
+
+		# Create recommendation record
+		recommendation = frappe.get_doc({
+			"doctype": "Smart Recommendation",
+			"member": member_name,
+			"recommendation_type": "Personalized",
+			"algorithm_used": algorithm.title(),
+			"confidence_score": calculate_confidence_score(recommended_books),
+			"member_reading_profile": {
+				"favorite_genres": genres,
+				"favorite_authors": authors,
+				"reading_frequency": len(reading_history)
+			},
+			"similar_members": ", ".join([m["member"] for m in similar_members[:5]]),
+			"reason_for_recommendation": generate_recommendation_reason(genres, authors, algorithm)
+		})
+
+		# Add recommended books
+		for book_rec in recommended_books[:10]:
+			recommendation.append("recommended_books", {
+				"book": book_rec["book"],
+				"recommendation_score": book_rec["score"],
+				"reason": book_rec["reason"]
+			})
+
+		recommendation.insert()
+
+		return {
+			"success": True,
+			"recommendation_id": recommendation.name,
+			"books_recommended": len(recommended_books),
+			"confidence_score": recommendation.confidence_score
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error generating recommendations: {str(e)}")
+		return {"success": False, "error": "An error occurred while generating recommendations."}
+
+
+@frappe.whitelist()
+def get_reading_circles(member_name=None, circle_type=None, status="Active"):
+	"""Get reading circles for a member or all public circles"""
+	try:
+		filters = {"status": status}
+
+		if circle_type:
+			filters["circle_type"] = circle_type
+
+		if member_name:
+			# Get circles where member is participant
+			member_circles = frappe.db.sql("""
+				SELECT DISTINCT rc.name
+				FROM `tabReading Circle` rc
+				JOIN `tabReading Circle Member` rcm ON rc.name = rcm.parent
+				WHERE rcm.member = %s
+			""", [member_name], as_dict=True)
+
+			circle_names = [c.name for c in member_circles]
+			if circle_names:
+				filters["name"] = ["in", circle_names]
+			else:
+				# If not a member of any circles, show public ones
+				filters["privacy_level"] = "Public"
+		else:
+			filters["privacy_level"] = "Public"
+
+		circles = frappe.get_all(
+			"Reading Circle",
+			filters=filters,
+			fields=[
+				"name", "circle_name", "circle_type", "privacy_level", "current_book",
+				"current_members", "max_members", "reading_pace", "discussion_frequency",
+				"engagement_score", "completion_rate"
+			],
+			order_by="engagement_score desc"
+		)
+
+		# Get current book details for each circle
+		for circle in circles:
+			if circle.current_book:
+				book = frappe.get_doc("Book", circle.current_book)
+				circle.book_details = {
+					"title": book.title,
+					"author": book.author,
+					"category": book.category
+				}
+
+		return {
+			"success": True,
+			"circles": circles,
+			"total_circles": len(circles)
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error getting reading circles: {str(e)}")
+		return {"success": False, "error": "An error occurred while fetching reading circles."}
+
+
+@frappe.whitelist()
+def join_reading_circle(circle_name, member_name=None):
+	"""Join a reading circle"""
+	try:
+		if not member_name:
+			user = frappe.session.user
+			member_name = frappe.db.get_value("Member", {"user": user}, "name")
+			if not member_name:
+				return {"success": False, "message": "No member record found for current user"}
+
+		circle = frappe.get_doc("Reading Circle", circle_name)
+
+		# Check if already a member
+		existing_member = frappe.db.exists("Reading Circle Member", {
+			"parent": circle_name,
+			"member": member_name
+		})
+
+		if existing_member:
+			return {"success": False, "message": "Already a member of this circle"}
+
+		# Check capacity
+		if circle.current_members >= circle.max_members:
+			return {"success": False, "message": "Circle is full"}
+
+		# Check privacy level
+		if circle.privacy_level == "Private":
+			return {"success": False, "message": "This is a private circle"}
+
+		# Add member to circle
+		circle.append("members", {
+			"member": member_name,
+			"joined_date": nowdate(),
+			"role": "Member",
+			"status": "Active"
+		})
+
+		circle.current_members += 1
+		circle.save()
+
+		return {
+			"success": True,
+			"message": "Successfully joined the reading circle",
+			"circle_name": circle.circle_name
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error joining reading circle: {str(e)}")
+		return {"success": False, "error": "An error occurred while joining the circle."}
+
+
+@frappe.whitelist()
+def get_smart_spaces(space_type=None, floor_level=None, capacity_min=None, available_only=True):
+	"""Get smart library spaces with real-time availability"""
+	try:
+		filters = {}
+
+		if space_type:
+			filters["space_type"] = space_type
+
+		if floor_level:
+			filters["floor_level"] = floor_level
+
+		if capacity_min:
+			filters["capacity"] = [">=", int(capacity_min)]
+
+		if available_only:
+			filters["status"] = ["in", ["Available", "Booked"]]
+
+		spaces = frappe.get_all(
+			"Smart Space",
+			filters=filters,
+			fields=[
+				"name", "space_name", "space_type", "location", "floor_level",
+				"capacity", "current_occupancy", "status", "utilization_rate",
+				"iot_sensors", "smart_lighting", "climate_control"
+			],
+			order_by="utilization_rate asc"
+		)
+
+		# Get real-time data for IoT-enabled spaces
+		for space in spaces:
+			if space.iot_sensors:
+				space.real_time_data = get_space_sensor_data(space.name)
+
+			# Calculate availability percentage
+			if space.capacity > 0:
+				space.availability_percentage = ((space.capacity - space.current_occupancy) / space.capacity) * 100
+			else:
+				space.availability_percentage = 0
+
+		return {
+			"success": True,
+			"spaces": spaces,
+			"total_spaces": len(spaces)
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error getting smart spaces: {str(e)}")
+		return {"success": False, "error": "An error occurred while fetching spaces."}
+
+
+@frappe.whitelist()
+def book_smart_space(space_name, member_name, start_time, duration_minutes, purpose=None):
+	"""Book a smart space"""
+	try:
+		space = frappe.get_doc("Smart Space", space_name)
+
+		if not space.booking_required:
+			return {"success": False, "message": "This space does not require booking"}
+
+		# Check availability
+		if space.status not in ["Available", "Booked"]:
+			return {"success": False, "message": "Space is not available for booking"}
+
+		# Validate duration
+		if int(duration_minutes) < space.min_booking_duration:
+			return {"success": False, "message": f"Minimum booking duration is {space.min_booking_duration} minutes"}
+
+		if int(duration_minutes) > space.max_booking_duration:
+			return {"success": False, "message": f"Maximum booking duration is {space.max_booking_duration} minutes"}
+
+		# Create booking
+		booking = frappe.get_doc({
+			"doctype": "Space Booking",
+			"space": space_name,
+			"member": member_name,
+			"booking_date": nowdate(),
+			"start_time": start_time,
+			"duration_minutes": int(duration_minutes),
+			"purpose": purpose or "",
+			"status": "Confirmed"
+		})
+		booking.insert()
+
+		# Update space status if needed
+		if space.current_occupancy + 1 >= space.capacity:
+			space.status = "Booked"
+			space.save()
+
+		return {
+			"success": True,
+			"booking_id": booking.name,
+			"message": "Space booked successfully"
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error booking smart space: {str(e)}")
+		return {"success": False, "error": "An error occurred while booking the space."}
+
+
+@frappe.whitelist()
+def search_knowledge_graph(query, entity_type=None, limit=20):
+	"""Search the knowledge graph for semantic connections"""
+	try:
+		filters = {}
+
+		if entity_type:
+			filters["entity_type"] = entity_type
+
+		# Search in entity names and related content
+		search_conditions = []
+		if query:
+			search_conditions = [
+				["entity_name", "like", f"%{query}%"],
+				["key_themes", "like", f"%{query}%"],
+				["ai_summary", "like", f"%{query}%"]
+			]
+
+		entities = []
+		for condition in search_conditions:
+			temp_filters = filters.copy()
+			temp_filters[condition[0]] = [condition[1], condition[2]]
+
+			results = frappe.get_all(
+				"Knowledge Graph",
+				filters=temp_filters,
+				fields=[
+					"name", "entity_name", "entity_type", "confidence_score",
+					"source_book", "key_themes", "ai_summary"
+				],
+				limit=int(limit)
+			)
+			entities.extend(results)
+
+		# Remove duplicates and sort by confidence
+		unique_entities = {}
+		for entity in entities:
+			if entity.name not in unique_entities:
+				unique_entities[entity.name] = entity
+
+		sorted_entities = sorted(
+			unique_entities.values(),
+			key=lambda x: x.confidence_score or 0,
+			reverse=True
+		)
+
+		# Get related entities for each result
+		for entity in sorted_entities[:int(limit)]:
+			entity_doc = frappe.get_doc("Knowledge Graph", entity.name)
+			entity.related_entities = []
+
+			if entity_doc.related_entities:
+				for rel in entity_doc.related_entities[:5]:
+					entity.related_entities.append({
+						"entity": rel.related_entity,
+						"relationship": rel.relationship_type,
+						"strength": rel.relationship_strength
+					})
+
+		return {
+			"success": True,
+			"entities": sorted_entities[:int(limit)],
+			"total_found": len(sorted_entities)
+		}
+
+	except Exception as e:
+		frappe.log_error(f"Error searching knowledge graph: {str(e)}")
+		return {"success": False, "error": "An error occurred while searching the knowledge graph."}
+

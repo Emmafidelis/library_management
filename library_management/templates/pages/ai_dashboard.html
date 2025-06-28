@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Library Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/assets/library_management/css/ai_dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="ai-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="fas fa-brain"></i>
+                <h1>AI Library Intelligence</h1>
+            </div>
+            <div class="header-controls">
+                <button class="ai-toggle" onclick="toggleAIFeatures()">
+                    <i class="fas fa-robot"></i> AI Mode
+                </button>
+                <button class="settings-btn" onclick="showSettings()">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="ai-dashboard">
+        <!-- AI Insights Panel -->
+        <section class="insights-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-lightbulb"></i> AI Insights</h2>
+                <div class="insight-controls">
+                    <select id="insight-timeframe">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                        <option value="quarter">This Quarter</option>
+                    </select>
+                    <button onclick="refreshInsights()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="insights-grid">
+                <div class="insight-card prediction">
+                    <div class="insight-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Usage Prediction</h3>
+                        <p class="insight-value" id="usage-prediction">+15%</p>
+                        <p class="insight-description">Expected increase in next week</p>
+                    </div>
+                </div>
+                
+                <div class="insight-card recommendation">
+                    <div class="insight-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Smart Recommendations</h3>
+                        <p class="insight-value" id="recommendations-generated">1,247</p>
+                        <p class="insight-description">Personalized recommendations this month</p>
+                    </div>
+                </div>
+                
+                <div class="insight-card optimization">
+                    <div class="insight-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Space Optimization</h3>
+                        <p class="insight-value" id="space-efficiency">87%</p>
+                        <p class="insight-description">Current space utilization efficiency</p>
+                    </div>
+                </div>
+                
+                <div class="insight-card engagement">
+                    <div class="insight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Member Engagement</h3>
+                        <p class="insight-value" id="engagement-score">92%</p>
+                        <p class="insight-description">AI-calculated engagement score</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Recommendations Section -->
+        <section class="recommendations-section">
+            <div class="section-header">
+                <h2><i class="fas fa-brain"></i> Smart Recommendations Engine</h2>
+                <div class="recommendation-controls">
+                    <button class="btn-primary" onclick="generateRecommendations()">
+                        <i class="fas fa-magic"></i> Generate New
+                    </button>
+                    <button class="btn-secondary" onclick="viewRecommendationAnalytics()">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </button>
+                </div>
+            </div>
+            
+            <div class="recommendations-dashboard">
+                <div class="recommendation-stats">
+                    <div class="stat-item">
+                        <h4>Active Recommendations</h4>
+                        <span class="stat-value" id="active-recommendations">342</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Success Rate</h4>
+                        <span class="stat-value" id="recommendation-success">78%</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Avg Confidence</h4>
+                        <span class="stat-value" id="avg-confidence">85%</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation-algorithms">
+                    <h3>Algorithm Performance</h3>
+                    <canvas id="algorithmChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading Circles Analytics -->
+        <section class="reading-circles-section">
+            <div class="section-header">
+                <h2><i class="fas fa-book-reader"></i> Reading Circles Intelligence</h2>
+                <button class="btn-primary" onclick="createSmartCircle()">
+                    <i class="fas fa-plus"></i> AI-Suggested Circle
+                </button>
+            </div>
+            
+            <div class="circles-analytics">
+                <div class="circle-metrics">
+                    <div class="metric-card">
+                        <h4>Active Circles</h4>
+                        <span class="metric-value" id="active-circles">23</span>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i> +12%
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Avg Engagement</h4>
+                        <span class="metric-value" id="circle-engagement">89%</span>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i> +5%
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Completion Rate</h4>
+                        <span class="metric-value" id="completion-rate">76%</span>
+                        <div class="metric-trend neutral">
+                            <i class="fas fa-minus"></i> 0%
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="circle-insights">
+                    <h3>AI Circle Insights</h3>
+                    <div id="circle-insights-list" class="insights-list">
+                        <!-- AI insights will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Space Management -->
+        <section class="smart-spaces-section">
+            <div class="section-header">
+                <h2><i class="fas fa-building"></i> Smart Space Intelligence</h2>
+                <div class="space-controls">
+                    <button class="btn-primary" onclick="optimizeSpaces()">
+                        <i class="fas fa-magic"></i> AI Optimize
+                    </button>
+                    <button class="btn-secondary" onclick="viewSpaceAnalytics()">
+                        <i class="fas fa-chart-area"></i> Analytics
+                    </button>
+                </div>
+            </div>
+            
+            <div class="spaces-dashboard">
+                <div class="space-overview">
+                    <div class="space-map" id="space-map">
+                        <!-- Interactive space map will be rendered here -->
+                    </div>
+                    <div class="space-recommendations">
+                        <h3>AI Recommendations</h3>
+                        <div id="space-recommendations-list">
+                            <!-- Space optimization recommendations -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="environmental-data">
+                    <h3>Environmental Intelligence</h3>
+                    <div class="env-metrics">
+                        <div class="env-metric">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Temperature</span>
+                            <span class="env-value" id="avg-temperature">22.5°C</span>
+                        </div>
+                        <div class="env-metric">
+                            <i class="fas fa-tint"></i>
+                            <span>Humidity</span>
+                            <span class="env-value" id="avg-humidity">45%</span>
+                        </div>
+                        <div class="env-metric">
+                            <i class="fas fa-volume-down"></i>
+                            <span>Noise Level</span>
+                            <span class="env-value" id="avg-noise">38 dB</span>
+                        </div>
+                        <div class="env-metric">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Lighting</span>
+                            <span class="env-value" id="avg-lighting">450 lux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Knowledge Graph Visualization -->
+        <section class="knowledge-graph-section">
+            <div class="section-header">
+                <h2><i class="fas fa-project-diagram"></i> Knowledge Graph Explorer</h2>
+                <div class="graph-controls">
+                    <input type="text" id="graph-search" placeholder="Search concepts, topics, or themes...">
+                    <button onclick="searchKnowledgeGraph()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button onclick="expandGraph()">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="knowledge-graph-container">
+                <div class="graph-visualization" id="knowledge-graph">
+                    <!-- D3.js knowledge graph visualization -->
+                </div>
+                <div class="graph-sidebar">
+                    <div class="selected-entity" id="selected-entity">
+                        <h3>Select an entity to explore</h3>
+                        <p>Click on any node in the graph to see detailed information and connections.</p>
+                    </div>
+                    <div class="entity-recommendations" id="entity-recommendations">
+                        <!-- Related entities and books -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VR Experiences Dashboard -->
+        <section class="vr-experiences-section">
+            <div class="section-header">
+                <h2><i class="fas fa-vr-cardboard"></i> VR Learning Experiences</h2>
+                <button class="btn-primary" onclick="createVRExperience()">
+                    <i class="fas fa-plus"></i> Create Experience
+                </button>
+            </div>
+            
+            <div class="vr-dashboard">
+                <div class="vr-stats">
+                    <div class="vr-stat">
+                        <h4>Active Experiences</h4>
+                        <span class="stat-value" id="active-vr">12</span>
+                    </div>
+                    <div class="vr-stat">
+                        <h4>Total Sessions</h4>
+                        <span class="stat-value" id="vr-sessions">1,456</span>
+                    </div>
+                    <div class="vr-stat">
+                        <h4>Avg Rating</h4>
+                        <span class="stat-value" id="vr-rating">4.7</span>
+                    </div>
+                    <div class="vr-stat">
+                        <h4>Learning Effectiveness</h4>
+                        <span class="stat-value" id="vr-effectiveness">91%</span>
+                    </div>
+                </div>
+                
+                <div class="vr-experiences-grid" id="vr-experiences-grid">
+                    <!-- VR experiences will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Rights Management -->
+        <section class="drm-section">
+            <div class="section-header">
+                <h2><i class="fas fa-shield-alt"></i> Digital Rights Intelligence</h2>
+                <button class="btn-primary" onclick="auditDigitalRights()">
+                    <i class="fas fa-search"></i> Audit Rights
+                </button>
+            </div>
+            
+            <div class="drm-dashboard">
+                <div class="rights-overview">
+                    <div class="rights-metric">
+                        <h4>Protected Resources</h4>
+                        <span class="metric-value" id="protected-resources">2,847</span>
+                    </div>
+                    <div class="rights-metric">
+                        <h4>Blockchain Verified</h4>
+                        <span class="metric-value" id="blockchain-verified">98%</span>
+                    </div>
+                    <div class="rights-metric">
+                        <h4>Compliance Score</h4>
+                        <span class="metric-value" id="compliance-score">96%</span>
+                    </div>
+                </div>
+                
+                <div class="rights-alerts" id="rights-alerts">
+                    <!-- Rights management alerts -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Settings Modal -->
+    <div id="ai-settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>AI Configuration</h3>
+                <span class="close" onclick="closeModal('ai-settings-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>Recommendation Engine</h4>
+                    <label>
+                        <input type="checkbox" id="enable-collaborative" checked>
+                        Enable Collaborative Filtering
+                    </label>
+                    <label>
+                        <input type="checkbox" id="enable-content-based" checked>
+                        Enable Content-Based Filtering
+                    </label>
+                    <label>
+                        <input type="range" id="confidence-threshold" min="0" max="100" value="70">
+                        Confidence Threshold: <span id="confidence-value">70%</span>
+                    </label>
+                </div>
+                
+                <div class="settings-section">
+                    <h4>Smart Spaces</h4>
+                    <label>
+                        <input type="checkbox" id="enable-predictive-maintenance" checked>
+                        Predictive Maintenance
+                    </label>
+                    <label>
+                        <input type="checkbox" id="enable-auto-optimization" checked>
+                        Automatic Space Optimization
+                    </label>
+                </div>
+                
+                <div class="settings-section">
+                    <h4>Knowledge Graph</h4>
+                    <label>
+                        <input type="checkbox" id="enable-auto-extraction" checked>
+                        Automatic Entity Extraction
+                    </label>
+                    <label>
+                        <input type="checkbox" id="enable-semantic-search" checked>
+                        Semantic Search Enhancement
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('ai-settings-modal')">Cancel</button>
+                <button class="btn-primary" onclick="saveAISettings()">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="ai-loading" class="loading-overlay">
+        <div class="ai-spinner">
+            <div class="spinner-brain">
+                <i class="fas fa-brain"></i>
+            </div>
+            <p>AI Processing...</p>
+        </div>
+    </div>
+
+    <script src="/assets/library_management/js/ai_dashboard.js"></script>
+</body>
+</html>
