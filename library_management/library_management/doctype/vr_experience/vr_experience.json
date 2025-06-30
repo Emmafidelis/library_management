@@ -1,0 +1,392 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "VR-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "experience_details_section",
+  "experience_name",
+  "experience_type",
+  "content_category",
+  "target_audience",
+  "column_break_1",
+  "duration_minutes",
+  "difficulty_level",
+  "vr_platform",
+  "status",
+  "content_section",
+  "description",
+  "learning_objectives",
+  "related_books",
+  "column_break_2",
+  "prerequisite_knowledge",
+  "content_warnings",
+  "accessibility_features",
+  "technical_specs_section",
+  "vr_headset_required",
+  "minimum_space_required",
+  "controller_type",
+  "column_break_3",
+  "graphics_quality",
+  "audio_features",
+  "haptic_feedback",
+  "interactive_elements_section",
+  "interactive_objects",
+  "decision_points",
+  "collaboration_features",
+  "column_break_4",
+  "assessment_tools",
+  "progress_tracking",
+  "achievement_system",
+  "analytics_section",
+  "usage_statistics",
+  "completion_rate",
+  "average_session_time",
+  "column_break_5",
+  "user_ratings",
+  "learning_effectiveness",
+  "motion_sickness_reports",
+  "ai_features_section",
+  "adaptive_difficulty",
+  "personalized_content",
+  "ai_tutor",
+  "column_break_6",
+  "behavior_analysis",
+  "learning_path_optimization",
+  "performance_prediction"
+ ],
+ "fields": [
+  {
+   "fieldname": "experience_details_section",
+   "fieldtype": "Section Break",
+   "label": "Experience Details"
+  },
+  {
+   "fieldname": "experience_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Experience Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "experience_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Experience Type",
+   "options": "\nVirtual Library Tour\nHistorical Recreation\nScientific Simulation\nLiterary World Exploration\nLanguage Immersion\nArt Gallery Experience\nArchitectural Walkthrough\nNature Documentary\nSpace Exploration\nUnderwater Adventure\nTime Travel Experience\nCultural Immersion",
+   "reqd": 1
+  },
+  {
+   "fieldname": "content_category",
+   "fieldtype": "Select",
+   "label": "Content Category",
+   "options": "\nEducational\nEntertainment\nTraining\nTherapeutic\nResearch\nCultural\nScientific\nHistorical\nArtistic\nLiterary"
+  },
+  {
+   "fieldname": "target_audience",
+   "fieldtype": "Select",
+   "label": "Target Audience",
+   "options": "\nChildren (5-12)\nTeenagers (13-17)\nAdults (18-64)\nSeniors (65+)\nStudents\nResearchers\nEducators\nGeneral Public"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)"
+  },
+  {
+   "fieldname": "difficulty_level",
+   "fieldtype": "Select",
+   "label": "Difficulty Level",
+   "options": "\nBeginner\nIntermediate\nAdvanced\nExpert"
+  },
+  {
+   "fieldname": "vr_platform",
+   "fieldtype": "Select",
+   "label": "VR Platform",
+   "options": "\nOculus Quest\nHTC Vive\nPlayStation VR\nValve Index\nPico\nMagic Leap\nHoloLens\nWeb VR\nMobile VR"
+  },
+  {
+   "default": "Development",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nDevelopment\nTesting\nReview\nPublished\nMaintenance\nRetired"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Content & Learning"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "learning_objectives",
+   "fieldtype": "Table",
+   "label": "Learning Objectives",
+   "options": "Learning Objective Item"
+  },
+  {
+   "fieldname": "related_books",
+   "fieldtype": "Table",
+   "label": "Related Books",
+   "options": "VR Related Book"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prerequisite_knowledge",
+   "fieldtype": "Text",
+   "label": "Prerequisite Knowledge"
+  },
+  {
+   "fieldname": "content_warnings",
+   "fieldtype": "Text",
+   "label": "Content Warnings"
+  },
+  {
+   "fieldname": "accessibility_features",
+   "fieldtype": "Table",
+   "label": "Accessibility Features",
+   "options": "Accessibility Feature Item"
+  },
+  {
+   "fieldname": "technical_specs_section",
+   "fieldtype": "Section Break",
+   "label": "Technical Specifications"
+  },
+  {
+   "fieldname": "vr_headset_required",
+   "fieldtype": "Select",
+   "label": "VR Headset Required",
+   "options": "\nEntry Level\nMid Range\nHigh End\nProfessional\nAny Compatible"
+  },
+  {
+   "fieldname": "minimum_space_required",
+   "fieldtype": "Select",
+   "label": "Minimum Space Required",
+   "options": "\nSeated\nStanding\nRoom Scale (2x2m)\nRoom Scale (3x3m)\nLarge Space (5x5m)"
+  },
+  {
+   "fieldname": "controller_type",
+   "fieldtype": "Select",
+   "label": "Controller Type",
+   "options": "\nHand Tracking\nMotion Controllers\nGamepad\nKeyboard/Mouse\nEye Tracking\nVoice Control"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "graphics_quality",
+   "fieldtype": "Select",
+   "label": "Graphics Quality",
+   "options": "\nLow\nMedium\nHigh\nUltra\nPhotorealistic"
+  },
+  {
+   "fieldname": "audio_features",
+   "fieldtype": "Table",
+   "label": "Audio Features",
+   "options": "Audio Feature Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "haptic_feedback",
+   "fieldtype": "Check",
+   "label": "Haptic Feedback Support"
+  },
+  {
+   "fieldname": "interactive_elements_section",
+   "fieldtype": "Section Break",
+   "label": "Interactive Elements"
+  },
+  {
+   "fieldname": "interactive_objects",
+   "fieldtype": "Table",
+   "label": "Interactive Objects",
+   "options": "Interactive Object Item"
+  },
+  {
+   "fieldname": "decision_points",
+   "fieldtype": "Table",
+   "label": "Decision Points",
+   "options": "Decision Point Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "collaboration_features",
+   "fieldtype": "Check",
+   "label": "Multi-user Collaboration"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assessment_tools",
+   "fieldtype": "Table",
+   "label": "Assessment Tools",
+   "options": "Assessment Tool Item"
+  },
+  {
+   "default": "1",
+   "fieldname": "progress_tracking",
+   "fieldtype": "Check",
+   "label": "Progress Tracking"
+  },
+  {
+   "fieldname": "achievement_system",
+   "fieldtype": "JSON",
+   "label": "Achievement System"
+  },
+  {
+   "fieldname": "analytics_section",
+   "fieldtype": "Section Break",
+   "label": "Analytics & Performance"
+  },
+  {
+   "fieldname": "usage_statistics",
+   "fieldtype": "JSON",
+   "label": "Usage Statistics",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completion_rate",
+   "fieldtype": "Percent",
+   "label": "Completion Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "average_session_time",
+   "fieldtype": "Float",
+   "label": "Average Session Time (minutes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user_ratings",
+   "fieldtype": "Float",
+   "label": "Average User Rating",
+   "read_only": 1
+  },
+  {
+   "fieldname": "learning_effectiveness",
+   "fieldtype": "Percent",
+   "label": "Learning Effectiveness Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "motion_sickness_reports",
+   "fieldtype": "Percent",
+   "label": "Motion Sickness Reports (%)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ai_features_section",
+   "fieldtype": "Section Break",
+   "label": "AI Features"
+  },
+  {
+   "default": "0",
+   "fieldname": "adaptive_difficulty",
+   "fieldtype": "Check",
+   "label": "Adaptive Difficulty"
+  },
+  {
+   "default": "0",
+   "fieldname": "personalized_content",
+   "fieldtype": "Check",
+   "label": "Personalized Content"
+  },
+  {
+   "default": "0",
+   "fieldname": "ai_tutor",
+   "fieldtype": "Check",
+   "label": "AI Virtual Tutor"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "behavior_analysis",
+   "fieldtype": "Check",
+   "label": "Behavior Analysis"
+  },
+  {
+   "default": "0",
+   "fieldname": "learning_path_optimization",
+   "fieldtype": "Check",
+   "label": "Learning Path Optimization"
+  },
+  {
+   "default": "0",
+   "fieldname": "performance_prediction",
+   "fieldtype": "Check",
+   "label": "Performance Prediction"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "VR Experience",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "experience_name,experience_type,content_category,target_audience"
+}

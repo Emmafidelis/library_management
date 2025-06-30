@@ -1,0 +1,438 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DRM-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rights_details_section",
+  "resource_name",
+  "resource_type",
+  "digital_resource",
+  "rights_holder",
+  "column_break_1",
+  "license_type",
+  "acquisition_date",
+  "expiry_date",
+  "status",
+  "blockchain_section",
+  "blockchain_network",
+  "smart_contract_address",
+  "token_id",
+  "column_break_2",
+  "transaction_hash",
+  "block_number",
+  "gas_used",
+  "permissions_section",
+  "usage_rights",
+  "distribution_rights",
+  "modification_rights",
+  "column_break_3",
+  "commercial_use",
+  "educational_use",
+  "research_use",
+  "access_control_section",
+  "access_level",
+  "concurrent_users",
+  "geographic_restrictions",
+  "column_break_4",
+  "time_restrictions",
+  "device_restrictions",
+  "ip_restrictions",
+  "usage_tracking_section",
+  "total_accesses",
+  "unique_users",
+  "download_count",
+  "column_break_5",
+  "streaming_hours",
+  "print_count",
+  "share_count",
+  "compliance_section",
+  "copyright_compliance",
+  "privacy_compliance",
+  "audit_trail",
+  "column_break_6",
+  "violation_reports",
+  "enforcement_actions",
+  "legal_notices",
+  "financial_section",
+  "license_cost",
+  "revenue_sharing",
+  "royalty_payments",
+  "column_break_7",
+  "usage_fees",
+  "penalty_fees",
+  "total_revenue"
+ ],
+ "fields": [
+  {
+   "fieldname": "rights_details_section",
+   "fieldtype": "Section Break",
+   "label": "Digital Rights Details"
+  },
+  {
+   "fieldname": "resource_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Resource Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resource_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Resource Type",
+   "options": "\nE-book\nAudiobook\nVideo\nSoftware\nDatabase\nJournal\nNewspaper\nMagazine\nResearch Paper\nImage\nMusic\nPodcast",
+   "reqd": 1
+  },
+  {
+   "fieldname": "digital_resource",
+   "fieldtype": "Link",
+   "label": "Digital Resource",
+   "options": "Digital Resource"
+  },
+  {
+   "fieldname": "rights_holder",
+   "fieldtype": "Data",
+   "label": "Rights Holder",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "license_type",
+   "fieldtype": "Select",
+   "label": "License Type",
+   "options": "\nSingle User\nMulti User\nInstitutional\nPublic Domain\nCreative Commons\nCommercial\nEducational\nResearch Only\nOpen Access"
+  },
+  {
+   "fieldname": "acquisition_date",
+   "fieldtype": "Date",
+   "label": "Acquisition Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nActive\nExpired\nSuspended\nRevoked\nPending\nRenewed"
+  },
+  {
+   "fieldname": "blockchain_section",
+   "fieldtype": "Section Break",
+   "label": "Blockchain Integration"
+  },
+  {
+   "fieldname": "blockchain_network",
+   "fieldtype": "Select",
+   "label": "Blockchain Network",
+   "options": "\nEthereum\nPolygon\nBinance Smart Chain\nSolana\nCardano\nHyperledger Fabric\nPrivate Network"
+  },
+  {
+   "fieldname": "smart_contract_address",
+   "fieldtype": "Data",
+   "label": "Smart Contract Address"
+  },
+  {
+   "fieldname": "token_id",
+   "fieldtype": "Data",
+   "label": "NFT Token ID"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_hash",
+   "fieldtype": "Data",
+   "label": "Transaction Hash"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "label": "Block Number"
+  },
+  {
+   "fieldname": "gas_used",
+   "fieldtype": "Float",
+   "label": "Gas Used"
+  },
+  {
+   "fieldname": "permissions_section",
+   "fieldtype": "Section Break",
+   "label": "Usage Permissions"
+  },
+  {
+   "fieldname": "usage_rights",
+   "fieldtype": "Table",
+   "label": "Usage Rights",
+   "options": "Usage Right Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "distribution_rights",
+   "fieldtype": "Check",
+   "label": "Distribution Rights"
+  },
+  {
+   "default": "0",
+   "fieldname": "modification_rights",
+   "fieldtype": "Check",
+   "label": "Modification Rights"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "commercial_use",
+   "fieldtype": "Check",
+   "label": "Commercial Use Allowed"
+  },
+  {
+   "default": "1",
+   "fieldname": "educational_use",
+   "fieldtype": "Check",
+   "label": "Educational Use Allowed"
+  },
+  {
+   "default": "1",
+   "fieldname": "research_use",
+   "fieldtype": "Check",
+   "label": "Research Use Allowed"
+  },
+  {
+   "fieldname": "access_control_section",
+   "fieldtype": "Section Break",
+   "label": "Access Control"
+  },
+  {
+   "fieldname": "access_level",
+   "fieldtype": "Select",
+   "label": "Access Level",
+   "options": "\nPublic\nMembers Only\nRestricted\nPrivate\nInstitutional\nSubscription Based"
+  },
+  {
+   "fieldname": "concurrent_users",
+   "fieldtype": "Int",
+   "label": "Max Concurrent Users"
+  },
+  {
+   "fieldname": "geographic_restrictions",
+   "fieldtype": "Table",
+   "label": "Geographic Restrictions",
+   "options": "Geographic Restriction Item"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time_restrictions",
+   "fieldtype": "Table",
+   "label": "Time Restrictions",
+   "options": "Time Restriction Item"
+  },
+  {
+   "fieldname": "device_restrictions",
+   "fieldtype": "Table",
+   "label": "Device Restrictions",
+   "options": "Device Restriction Item"
+  },
+  {
+   "fieldname": "ip_restrictions",
+   "fieldtype": "Text",
+   "label": "IP Address Restrictions"
+  },
+  {
+   "fieldname": "usage_tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Usage Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_accesses",
+   "fieldtype": "Int",
+   "label": "Total Accesses",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "unique_users",
+   "fieldtype": "Int",
+   "label": "Unique Users",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "download_count",
+   "fieldtype": "Int",
+   "label": "Download Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "streaming_hours",
+   "fieldtype": "Float",
+   "label": "Streaming Hours",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "print_count",
+   "fieldtype": "Int",
+   "label": "Print Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "share_count",
+   "fieldtype": "Int",
+   "label": "Share Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "compliance_section",
+   "fieldtype": "Section Break",
+   "label": "Compliance & Enforcement"
+  },
+  {
+   "default": "1",
+   "fieldname": "copyright_compliance",
+   "fieldtype": "Check",
+   "label": "Copyright Compliant"
+  },
+  {
+   "default": "1",
+   "fieldname": "privacy_compliance",
+   "fieldtype": "Check",
+   "label": "Privacy Compliant"
+  },
+  {
+   "fieldname": "audit_trail",
+   "fieldtype": "JSON",
+   "label": "Audit Trail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "violation_reports",
+   "fieldtype": "Table",
+   "label": "Violation Reports",
+   "options": "Rights Violation Item"
+  },
+  {
+   "fieldname": "enforcement_actions",
+   "fieldtype": "Table",
+   "label": "Enforcement Actions",
+   "options": "Enforcement Action Item"
+  },
+  {
+   "fieldname": "legal_notices",
+   "fieldtype": "Table",
+   "label": "Legal Notices",
+   "options": "Legal Notice Item"
+  },
+  {
+   "fieldname": "financial_section",
+   "fieldtype": "Section Break",
+   "label": "Financial Tracking"
+  },
+  {
+   "fieldname": "license_cost",
+   "fieldtype": "Currency",
+   "label": "License Cost"
+  },
+  {
+   "fieldname": "revenue_sharing",
+   "fieldtype": "Percent",
+   "label": "Revenue Sharing %"
+  },
+  {
+   "fieldname": "royalty_payments",
+   "fieldtype": "Currency",
+   "label": "Royalty Payments",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "usage_fees",
+   "fieldtype": "Currency",
+   "label": "Usage Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "penalty_fees",
+   "fieldtype": "Currency",
+   "label": "Penalty Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_revenue",
+   "fieldtype": "Currency",
+   "label": "Total Revenue Generated",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Digital Rights",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "resource_name,resource_type,rights_holder,license_type"
+}

@@ -1,0 +1,396 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SPACE-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "space_details_section",
+  "space_name",
+  "space_type",
+  "location",
+  "floor_level",
+  "column_break_1",
+  "capacity",
+  "current_occupancy",
+  "status",
+  "booking_required",
+  "smart_features_section",
+  "iot_sensors",
+  "occupancy_tracking",
+  "environmental_monitoring",
+  "column_break_2",
+  "smart_lighting",
+  "climate_control",
+  "noise_monitoring",
+  "booking_management_section",
+  "booking_slots",
+  "advance_booking_days",
+  "min_booking_duration",
+  "max_booking_duration",
+  "column_break_3",
+  "auto_release_time",
+  "no_show_policy",
+  "cancellation_policy",
+  "equipment_section",
+  "available_equipment",
+  "equipment_booking",
+  "maintenance_schedule",
+  "column_break_4",
+  "equipment_status",
+  "usage_tracking",
+  "replacement_alerts",
+  "analytics_section",
+  "utilization_rate",
+  "peak_hours",
+  "average_session_duration",
+  "column_break_5",
+  "member_satisfaction",
+  "energy_consumption",
+  "maintenance_costs",
+  "ai_optimization_section",
+  "predictive_maintenance",
+  "optimal_temperature",
+  "lighting_preferences",
+  "column_break_6",
+  "usage_predictions",
+  "space_recommendations",
+  "efficiency_score"
+ ],
+ "fields": [
+  {
+   "fieldname": "space_details_section",
+   "fieldtype": "Section Break",
+   "label": "Space Details"
+  },
+  {
+   "fieldname": "space_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Space Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "space_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Space Type",
+   "options": "\nStudy Room\nGroup Study Room\nMeeting Room\nQuiet Zone\nCollaborative Space\nComputer Lab\nMaker Space\nEvent Hall\nReading Lounge\nPrivate Booth\nPhone Booth\nPresentation Room",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "floor_level",
+   "fieldtype": "Select",
+   "label": "Floor Level",
+   "options": "\nBasement\nGround Floor\nFirst Floor\nSecond Floor\nThird Floor\nFourth Floor\nFifth Floor"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Capacity",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "current_occupancy",
+   "fieldtype": "Int",
+   "label": "Current Occupancy",
+   "read_only": 1
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nAvailable\nOccupied\nBooked\nMaintenance\nCleaning\nOut of Service"
+  },
+  {
+   "default": "1",
+   "fieldname": "booking_required",
+   "fieldtype": "Check",
+   "label": "Booking Required"
+  },
+  {
+   "fieldname": "smart_features_section",
+   "fieldtype": "Section Break",
+   "label": "Smart Features"
+  },
+  {
+   "default": "0",
+   "fieldname": "iot_sensors",
+   "fieldtype": "Check",
+   "label": "IoT Sensors Installed"
+  },
+  {
+   "default": "0",
+   "fieldname": "occupancy_tracking",
+   "fieldtype": "Check",
+   "label": "Occupancy Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "environmental_monitoring",
+   "fieldtype": "Check",
+   "label": "Environmental Monitoring"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "smart_lighting",
+   "fieldtype": "Check",
+   "label": "Smart Lighting"
+  },
+  {
+   "default": "0",
+   "fieldname": "climate_control",
+   "fieldtype": "Check",
+   "label": "Climate Control"
+  },
+  {
+   "default": "0",
+   "fieldname": "noise_monitoring",
+   "fieldtype": "Check",
+   "label": "Noise Monitoring"
+  },
+  {
+   "fieldname": "booking_management_section",
+   "fieldtype": "Section Break",
+   "label": "Booking Management"
+  },
+  {
+   "fieldname": "booking_slots",
+   "fieldtype": "Table",
+   "label": "Available Time Slots",
+   "options": "Space Booking Slot"
+  },
+  {
+   "default": "7",
+   "fieldname": "advance_booking_days",
+   "fieldtype": "Int",
+   "label": "Advance Booking Days"
+  },
+  {
+   "default": "30",
+   "fieldname": "min_booking_duration",
+   "fieldtype": "Int",
+   "label": "Min Booking Duration (minutes)"
+  },
+  {
+   "default": "480",
+   "fieldname": "max_booking_duration",
+   "fieldtype": "Int",
+   "label": "Max Booking Duration (minutes)"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "15",
+   "fieldname": "auto_release_time",
+   "fieldtype": "Int",
+   "label": "Auto Release Time (minutes)"
+  },
+  {
+   "fieldname": "no_show_policy",
+   "fieldtype": "Text",
+   "label": "No Show Policy"
+  },
+  {
+   "fieldname": "cancellation_policy",
+   "fieldtype": "Text",
+   "label": "Cancellation Policy"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment & Resources"
+  },
+  {
+   "fieldname": "available_equipment",
+   "fieldtype": "Table",
+   "label": "Available Equipment",
+   "options": "Space Equipment Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "equipment_booking",
+   "fieldtype": "Check",
+   "label": "Equipment Booking Required"
+  },
+  {
+   "fieldname": "maintenance_schedule",
+   "fieldtype": "Table",
+   "label": "Maintenance Schedule",
+   "options": "Maintenance Schedule Item"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "equipment_status",
+   "fieldtype": "JSON",
+   "label": "Equipment Status"
+  },
+  {
+   "fieldname": "usage_tracking",
+   "fieldtype": "JSON",
+   "label": "Usage Tracking Data"
+  },
+  {
+   "fieldname": "replacement_alerts",
+   "fieldtype": "JSON",
+   "label": "Replacement Alerts"
+  },
+  {
+   "fieldname": "analytics_section",
+   "fieldtype": "Section Break",
+   "label": "Analytics & Metrics"
+  },
+  {
+   "fieldname": "utilization_rate",
+   "fieldtype": "Percent",
+   "label": "Utilization Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "peak_hours",
+   "fieldtype": "JSON",
+   "label": "Peak Hours Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "average_session_duration",
+   "fieldtype": "Float",
+   "label": "Average Session Duration (hours)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_satisfaction",
+   "fieldtype": "Float",
+   "label": "Member Satisfaction Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "energy_consumption",
+   "fieldtype": "Float",
+   "label": "Energy Consumption (kWh)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maintenance_costs",
+   "fieldtype": "Currency",
+   "label": "Monthly Maintenance Costs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ai_optimization_section",
+   "fieldtype": "Section Break",
+   "label": "AI Optimization"
+  },
+  {
+   "default": "0",
+   "fieldname": "predictive_maintenance",
+   "fieldtype": "Check",
+   "label": "Predictive Maintenance"
+  },
+  {
+   "fieldname": "optimal_temperature",
+   "fieldtype": "Float",
+   "label": "AI Optimal Temperature (°C)"
+  },
+  {
+   "fieldname": "lighting_preferences",
+   "fieldtype": "JSON",
+   "label": "AI Lighting Preferences"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "usage_predictions",
+   "fieldtype": "JSON",
+   "label": "Usage Predictions"
+  },
+  {
+   "fieldname": "space_recommendations",
+   "fieldtype": "Text",
+   "label": "AI Space Recommendations"
+  },
+  {
+   "fieldname": "efficiency_score",
+   "fieldtype": "Percent",
+   "label": "AI Efficiency Score"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Smart Space",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "space_name,space_type,location,status"
+}

@@ -1,0 +1,360 @@
+{
+ "actions": [],
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "library_info_section",
+  "library_name",
+  "library_code",
+  "address",
+  "phone",
+  "column_break_1",
+  "email",
+  "website",
+  "operating_hours",
+  "loan_settings_section",
+  "default_loan_period",
+  "max_renewals",
+  "grace_period_days",
+  "column_break_2",
+  "fine_per_day",
+  "max_fine_amount",
+  "fine_currency",
+  "membership_settings_section",
+  "student_max_books",
+  "faculty_max_books",
+  "staff_max_books",
+  "public_max_books",
+  "column_break_3",
+  "student_loan_days",
+  "faculty_loan_days",
+  "staff_loan_days",
+  "public_loan_days",
+  "notification_settings_section",
+  "enable_email_notifications",
+  "enable_sms_notifications",
+  "reminder_days_before_due",
+  "column_break_4",
+  "overdue_reminder_frequency",
+  "email_template_due_reminder",
+  "email_template_overdue",
+  "integration_settings_section",
+  "enable_erpnext_integration",
+  "default_customer_group",
+  "default_income_account",
+  "column_break_5",
+  "default_cost_center",
+  "auto_create_payment_entries",
+  "barcode_settings_section",
+  "enable_barcode_scanning",
+  "barcode_prefix",
+  "column_break_6",
+  "auto_generate_barcodes",
+  "barcode_format"
+ ],
+ "fields": [
+  {
+   "fieldname": "library_info_section",
+   "fieldtype": "Section Break",
+   "label": "Library Information"
+  },
+  {
+   "fieldname": "library_name",
+   "fieldtype": "Data",
+   "label": "Library Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "library_code",
+   "fieldtype": "Data",
+   "label": "Library Code"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "operating_hours",
+   "fieldtype": "Text",
+   "label": "Operating Hours"
+  },
+  {
+   "fieldname": "loan_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Loan Settings"
+  },
+  {
+   "default": "14",
+   "fieldname": "default_loan_period",
+   "fieldtype": "Int",
+   "label": "Default Loan Period (Days)"
+  },
+  {
+   "default": "2",
+   "fieldname": "max_renewals",
+   "fieldtype": "Int",
+   "label": "Maximum Renewals"
+  },
+  {
+   "default": "3",
+   "fieldname": "grace_period_days",
+   "fieldtype": "Int",
+   "label": "Grace Period (Days)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.0",
+   "fieldname": "fine_per_day",
+   "fieldtype": "Currency",
+   "label": "Fine Per Day"
+  },
+  {
+   "default": "100.0",
+   "fieldname": "max_fine_amount",
+   "fieldtype": "Currency",
+   "label": "Maximum Fine Amount"
+  },
+  {
+   "fieldname": "fine_currency",
+   "fieldtype": "Link",
+   "label": "Fine Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "membership_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Membership Settings"
+  },
+  {
+   "default": "3",
+   "fieldname": "student_max_books",
+   "fieldtype": "Int",
+   "label": "Student - Max Books"
+  },
+  {
+   "default": "10",
+   "fieldname": "faculty_max_books",
+   "fieldtype": "Int",
+   "label": "Faculty - Max Books"
+  },
+  {
+   "default": "5",
+   "fieldname": "staff_max_books",
+   "fieldtype": "Int",
+   "label": "Staff - Max Books"
+  },
+  {
+   "default": "2",
+   "fieldname": "public_max_books",
+   "fieldtype": "Int",
+   "label": "Public - Max Books"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "14",
+   "fieldname": "student_loan_days",
+   "fieldtype": "Int",
+   "label": "Student - Loan Days"
+  },
+  {
+   "default": "30",
+   "fieldname": "faculty_loan_days",
+   "fieldtype": "Int",
+   "label": "Faculty - Loan Days"
+  },
+  {
+   "default": "21",
+   "fieldname": "staff_loan_days",
+   "fieldtype": "Int",
+   "label": "Staff - Loan Days"
+  },
+  {
+   "default": "14",
+   "fieldname": "public_loan_days",
+   "fieldtype": "Int",
+   "label": "Public - Loan Days"
+  },
+  {
+   "fieldname": "notification_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_email_notifications",
+   "fieldtype": "Check",
+   "label": "Enable Email Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_sms_notifications",
+   "fieldtype": "Check",
+   "label": "Enable SMS Notifications"
+  },
+  {
+   "default": "3",
+   "fieldname": "reminder_days_before_due",
+   "fieldtype": "Int",
+   "label": "Reminder Days Before Due"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Daily",
+   "fieldname": "overdue_reminder_frequency",
+   "fieldtype": "Select",
+   "label": "Overdue Reminder Frequency",
+   "options": "\nDaily\nWeekly\nBi-weekly"
+  },
+  {
+   "fieldname": "email_template_due_reminder",
+   "fieldtype": "Link",
+   "label": "Email Template - Due Reminder",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "email_template_overdue",
+   "fieldtype": "Link",
+   "label": "Email Template - Overdue",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "integration_settings_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_erpnext_integration",
+   "fieldtype": "Check",
+   "label": "Enable ERPNext Integration"
+  },
+  {
+   "depends_on": "enable_erpnext_integration",
+   "fieldname": "default_customer_group",
+   "fieldtype": "Link",
+   "label": "Default Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "depends_on": "enable_erpnext_integration",
+   "fieldname": "default_income_account",
+   "fieldtype": "Link",
+   "label": "Default Income Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "enable_erpnext_integration",
+   "fieldname": "default_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "depends_on": "enable_erpnext_integration",
+   "fieldname": "auto_create_payment_entries",
+   "fieldtype": "Check",
+   "label": "Auto Create Payment Entries"
+  },
+  {
+   "fieldname": "barcode_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Barcode Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_barcode_scanning",
+   "fieldtype": "Check",
+   "label": "Enable Barcode Scanning"
+  },
+  {
+   "default": "LIB",
+   "fieldname": "barcode_prefix",
+   "fieldtype": "Data",
+   "label": "Barcode Prefix"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_generate_barcodes",
+   "fieldtype": "Check",
+   "label": "Auto Generate Barcodes"
+  },
+  {
+   "default": "Code128",
+   "fieldname": "barcode_format",
+   "fieldtype": "Select",
+   "label": "Barcode Format",
+   "options": "\nCode128\nCode39\nEAN13\nQR Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Library Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Librarian",
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

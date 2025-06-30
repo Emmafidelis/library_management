@@ -1,19 +1,60 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "B.####",
+ "autoname": "LIB-BOOK-.####",
  "creation": "2024-10-25 12:33:25.250259",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "basic_info_section",
   "title",
   "author",
   "isbn",
+  "barcode",
+  "column_break_1",
   "category",
-  "status"
+  "subcategory",
+  "language",
+  "book_type",
+  "section_break_2",
+  "publisher",
+  "publication_date",
+  "edition",
+  "pages",
+  "column_break_3",
+  "price",
+  "currency",
+  "acquisition_date",
+  "source",
+  "inventory_section",
+  "total_copies",
+  "available_copies",
+  "issued_copies",
+  "damaged_copies",
+  "column_break_4",
+  "location",
+  "shelf_number",
+  "status",
+  "condition",
+  "description_section",
+  "description",
+  "keywords",
+  "notes"
  ],
  "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
   {
    "fieldname": "author",
    "fieldtype": "Data",
@@ -24,26 +65,172 @@
   {
    "fieldname": "isbn",
    "fieldtype": "Data",
-   "label": "ISBN"
+   "label": "ISBN",
+   "unique": 1
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "category",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Category",
-   "options": "\nFiction\nNon-Fiction\nScience\nHistory\nRomance\nTechnology"
+   "options": "\nFiction\nNon-Fiction\nScience\nTechnology\nHistory\nBiography\nRomance\nMystery\nFantasy\nEducational\nReference\nChildren\nYoung Adult\nReligious\nPhilosophy\nArt\nMusic\nSports\nHealth\nCooking\nTravel\nBusiness\nSelf-Help",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subcategory",
+   "fieldtype": "Data",
+   "label": "Subcategory"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "\nEnglish\nSpanish\nFrench\nGerman\nItalian\nPortuguese\nRussian\nChinese\nJapanese\nArabic\nHindi\nOther"
+  },
+  {
+   "fieldname": "book_type",
+   "fieldtype": "Select",
+   "label": "Book Type",
+   "options": "\nPhysical\nE-book\nAudiobook\nHybrid"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Publication Details"
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Data",
+   "label": "Publisher"
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Date",
+   "label": "Publication Date"
+  },
+  {
+   "fieldname": "edition",
+   "fieldtype": "Data",
+   "label": "Edition"
+  },
+  {
+   "fieldname": "pages",
+   "fieldtype": "Int",
+   "label": "Number of Pages"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "acquisition_date",
+   "fieldtype": "Date",
+   "label": "Acquisition Date"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "\nPurchase\nDonation\nExchange\nGift"
+  },
+  {
+   "fieldname": "inventory_section",
+   "fieldtype": "Section Break",
+   "label": "Inventory Management"
+  },
+  {
+   "fieldname": "total_copies",
+   "fieldtype": "Int",
+   "default": "1",
+   "label": "Total Copies",
+   "reqd": 1
+  },
+  {
+   "fieldname": "available_copies",
+   "fieldtype": "Int",
+   "label": "Available Copies",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issued_copies",
+   "fieldtype": "Int",
+   "label": "Issued Copies",
+   "read_only": 1
+  },
+  {
+   "fieldname": "damaged_copies",
+   "fieldtype": "Int",
+   "default": "0",
+   "label": "Damaged Copies"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location/Section"
+  },
+  {
+   "fieldname": "shelf_number",
+   "fieldtype": "Data",
+   "label": "Shelf Number"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
-   "options": "\nAvailable\nIssued\nDamaged"
+   "options": "\nAvailable\nIssued\nReserved\nDamaged\nLost\nUnder Repair\nDiscarded",
+   "reqd": 1
   },
   {
-   "fieldname": "title",
+   "fieldname": "condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "\nExcellent\nGood\nFair\nPoor\nDamaged"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "keywords",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Title",
-   "reqd": 1
+   "label": "Keywords"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -54,10 +241,44 @@
  "name": "Book",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
  "quick_entry": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1
+ "track_changes": 1,
+ "search_fields": "title,author,isbn,category,barcode"
 }

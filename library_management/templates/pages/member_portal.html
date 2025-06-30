@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Portal - Library Management</title>
+    <link rel="stylesheet" type="text/css" href="/assets/library_management/css/member_portal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="header-content">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1>Library Portal</h1>
+            <button class="profile-btn" onclick="showProfile()">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <h3 id="member-name">Loading...</h3>
+                    <p id="member-id">Member ID</p>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a></li>
+            <li><a href="#my-books" class="nav-link" onclick="showSection('my-books')">
+                <i class="fas fa-book-open"></i> My Books
+            </a></li>
+            <li><a href="#search-books" class="nav-link" onclick="showSection('search-books')">
+                <i class="fas fa-search"></i> Search Books
+            </a></li>
+            <li><a href="#reservations" class="nav-link" onclick="showSection('reservations')">
+                <i class="fas fa-bookmark"></i> Reservations
+            </a></li>
+            <li><a href="#fines" class="nav-link" onclick="showSection('fines')">
+                <i class="fas fa-money-bill"></i> Fines
+            </a></li>
+            <li><a href="#events" class="nav-link" onclick="showSection('events')">
+                <i class="fas fa-calendar"></i> Events
+            </a></li>
+            <li><a href="#digital-library" class="nav-link" onclick="showSection('digital-library')">
+                <i class="fas fa-tablet-alt"></i> Digital Library
+            </a></li>
+            <li><a href="#profile" class="nav-link" onclick="showSection('profile')">
+                <i class="fas fa-user-cog"></i> Profile
+            </a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h2>Dashboard</h2>
+                <button class="refresh-btn" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon books">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="books-issued">0</h3>
+                        <p>Books Issued</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon overdue">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="overdue-books">0</h3>
+                        <p>Overdue Books</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon fines">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-fines">$0</h3>
+                        <p>Outstanding Fines</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon reservations">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="active-reservations">0</h3>
+                        <p>Active Reservations</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Books -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Currently Issued Books</h3>
+                    <a href="#my-books" onclick="showSection('my-books')">View All</a>
+                </div>
+                <div class="card-content">
+                    <div id="current-books-list" class="books-list">
+                        <!-- Books will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Upcoming Events</h3>
+                    <a href="#events" onclick="showSection('events')">View All</a>
+                </div>
+                <div class="card-content">
+                    <div id="upcoming-events-list" class="events-list">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Books Section -->
+        <section id="my-books" class="content-section">
+            <div class="section-header">
+                <h2>My Books</h2>
+                <div class="filter-tabs">
+                    <button class="tab-btn active" onclick="filterBooks('all')">All</button>
+                    <button class="tab-btn" onclick="filterBooks('active')">Active</button>
+                    <button class="tab-btn" onclick="filterBooks('overdue')">Overdue</button>
+                    <button class="tab-btn" onclick="filterBooks('history')">History</button>
+                </div>
+            </div>
+            
+            <div id="my-books-list" class="books-grid">
+                <!-- Books will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Search Books Section -->
+        <section id="search-books" class="content-section">
+            <div class="section-header">
+                <h2>Search Books</h2>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="book-search" placeholder="Search by title, author, or ISBN...">
+                    <button onclick="searchBooks()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="search-filters">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="Technology">Technology</option>
+                        <option value="History">History</option>
+                    </select>
+                    
+                    <select id="language-filter">
+                        <option value="">All Languages</option>
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                    </select>
+                    
+                    <select id="availability-filter">
+                        <option value="">All Books</option>
+                        <option value="available">Available Only</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="search-results" class="books-grid">
+                <!-- Search results will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Reservations Section -->
+        <section id="reservations" class="content-section">
+            <div class="section-header">
+                <h2>My Reservations</h2>
+                <button class="btn btn-primary" onclick="showReserveBookModal()">
+                    <i class="fas fa-plus"></i> Reserve Book
+                </button>
+            </div>
+            
+            <div id="reservations-list" class="reservations-grid">
+                <!-- Reservations will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Fines Section -->
+        <section id="fines" class="content-section">
+            <div class="section-header">
+                <h2>Fines & Payments</h2>
+            </div>
+            
+            <div class="fines-summary">
+                <div class="summary-card">
+                    <h3>Total Outstanding</h3>
+                    <p class="amount" id="total-outstanding">$0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>This Month</h3>
+                    <p class="amount" id="month-fines">$0.00</p>
+                </div>
+            </div>
+            
+            <div id="fines-list" class="fines-grid">
+                <!-- Fines will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="content-section">
+            <div class="section-header">
+                <h2>Library Events</h2>
+                <div class="filter-tabs">
+                    <button class="tab-btn active" onclick="filterEvents('upcoming')">Upcoming</button>
+                    <button class="tab-btn" onclick="filterEvents('registered')">My Events</button>
+                    <button class="tab-btn" onclick="filterEvents('past')">Past Events</button>
+                </div>
+            </div>
+            
+            <div id="events-list" class="events-grid">
+                <!-- Events will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Digital Library Section -->
+        <section id="digital-library" class="content-section">
+            <div class="section-header">
+                <h2>Digital Library</h2>
+            </div>
+            
+            <div class="digital-categories">
+                <div class="category-card" onclick="filterDigitalResources('E-book')">
+                    <i class="fas fa-book"></i>
+                    <h3>E-books</h3>
+                </div>
+                <div class="category-card" onclick="filterDigitalResources('Audiobook')">
+                    <i class="fas fa-headphones"></i>
+                    <h3>Audiobooks</h3>
+                </div>
+                <div class="category-card" onclick="filterDigitalResources('Video')">
+                    <i class="fas fa-video"></i>
+                    <h3>Videos</h3>
+                </div>
+                <div class="category-card" onclick="filterDigitalResources('Document')">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Documents</h3>
+                </div>
+            </div>
+            
+            <div id="digital-resources-list" class="digital-grid">
+                <!-- Digital resources will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="content-section">
+            <div class="section-header">
+                <h2>My Profile</h2>
+                <button class="btn btn-secondary" onclick="editProfile()">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info" id="profile-info">
+                        <!-- Profile information will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="membership-details">
+                    <h3>Membership Details</h3>
+                    <div id="membership-info">
+                        <!-- Membership details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Book Details Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-book-title">Book Details</h3>
+                <span class="close" onclick="closeModal('bookModal')">&times;</span>
+            </div>
+            <div class="modal-body" id="book-details-content">
+                <!-- Book details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Reserve Book Modal -->
+    <div id="reserveModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reserve Book</h3>
+                <span class="close" onclick="closeModal('reserveModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reserveForm">
+                    <div class="form-group">
+                        <label for="reserve-book-search">Search Book</label>
+                        <input type="text" id="reserve-book-search" placeholder="Search by title or author" required>
+                        <div id="reserve-book-suggestions" class="suggestions"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reserve-notes">Notes (Optional)</label>
+                        <textarea id="reserve-notes" placeholder="Any additional notes"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('reserveModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Reserve Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/assets/library_management/js/member_portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LIB-RES-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reservation_details_section",
+  "member",
+  "book",
+  "reservation_date",
+  "expiry_date",
+  "column_break_1",
+  "status",
+  "priority",
+  "notification_sent",
+  "notes",
+  "fulfillment_section",
+  "fulfilled_date",
+  "fulfilled_by",
+  "transaction",
+  "column_break_2",
+  "cancelled_date",
+  "cancelled_by",
+  "cancellation_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "reservation_details_section",
+   "fieldtype": "Section Break",
+   "label": "Reservation Details"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "book",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book",
+   "options": "Book",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "reservation_date",
+   "fieldtype": "Date",
+   "label": "Reservation Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nActive\nFulfilled\nExpired\nCancelled",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_sent",
+   "fieldtype": "Check",
+   "label": "Notification Sent"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "depends_on": "eval:doc.status=='Fulfilled'",
+   "fieldname": "fulfillment_section",
+   "fieldtype": "Section Break",
+   "label": "Fulfillment Details"
+  },
+  {
+   "fieldname": "fulfilled_date",
+   "fieldtype": "Date",
+   "label": "Fulfilled Date"
+  },
+  {
+   "fieldname": "fulfilled_by",
+   "fieldtype": "Link",
+   "label": "Fulfilled By",
+   "options": "User"
+  },
+  {
+   "fieldname": "transaction",
+   "fieldtype": "Link",
+   "label": "Library Transaction",
+   "options": "Library Transaction"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cancelled_date",
+   "fieldtype": "Date",
+   "label": "Cancelled Date"
+  },
+  {
+   "fieldname": "cancelled_by",
+   "fieldtype": "Link",
+   "label": "Cancelled By",
+   "options": "User"
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Text",
+   "label": "Cancellation Reason"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Book Reservation",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "member,book,status"
+}
