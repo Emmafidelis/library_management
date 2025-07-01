@@ -25,13 +25,18 @@ app_license = "mit"
 website_route_rules = [
     {"from_route": "/landing", "to_route": "landing"},
     {"from_route": "/dashboard", "to_route": "dashboard"},
+    {"from_route": "/ai-dashboard", "to_route": "ai_dashboard"},
     {"from_route": "/member-portal", "to_route": "member_portal"},
     {"from_route": "/books", "to_route": "book"},
     {"from_route": "/members", "to_route": "members"},
     {"from_route": "/transactions", "to_route": "transactions"},
     {"from_route": "/reports", "to_route": "reports"},
     {"from_route": "/events", "to_route": "events"},
-    {"from_route": "/digital-library", "to_route": "digital_library"}
+    {"from_route": "/digital-library", "to_route": "digital_library"},
+    {"from_route": "/reading-circles", "to_route": "reading_circles"},
+    {"from_route": "/smart-spaces", "to_route": "smart_spaces"},
+    {"from_route": "/knowledge-graph", "to_route": "knowledge_graph"},
+    {"from_route": "/vr-experiences", "to_route": "vr_experiences"}
 ]
 
 # ------------------
@@ -44,12 +49,15 @@ website_route_rules = [
 web_include_css = [
     "/assets/library_management/css/landing.css",
     "/assets/library_management/css/dashboard.css",
-    "/assets/library_management/css/member_portal.css"
+    "/assets/library_management/css/member_portal.css",
+    "/assets/library_management/css/ai_dashboard.css"
 ]
 web_include_js = [
     "/assets/library_management/js/landing.js",
     "/assets/library_management/js/dashboard.js",
-    "/assets/library_management/js/member_portal.js"
+    "/assets/library_management/js/member_portal.js",
+    "/assets/library_management/js/ai_dashboard.js",
+    "/assets/library_management/js/ai_features.js"
 ]
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -204,7 +212,14 @@ override_whitelisted_methods = {
     "library_management.library_management.api.get_digital_resources": "library_management.library_management.api.get_digital_resources",
     "library_management.library_management.api.access_digital_resource": "library_management.library_management.api.access_digital_resource",
     "library_management.library_management.api.get_library_events": "library_management.library_management.api.get_library_events",
-    "library_management.library_management.api.register_for_event": "library_management.library_management.api.register_for_event"
+    "library_management.library_management.api.register_for_event": "library_management.library_management.api.register_for_event",
+    "library_management.library_management.api.get_smart_recommendations": "library_management.library_management.api.get_smart_recommendations",
+    "library_management.library_management.api.generate_personalized_recommendations": "library_management.library_management.api.generate_personalized_recommendations",
+    "library_management.library_management.api.get_reading_circles": "library_management.library_management.api.get_reading_circles",
+    "library_management.library_management.api.join_reading_circle": "library_management.library_management.api.join_reading_circle",
+    "library_management.library_management.api.get_smart_spaces": "library_management.library_management.api.get_smart_spaces",
+    "library_management.library_management.api.book_smart_space": "library_management.library_management.api.book_smart_space",
+    "library_management.library_management.api.search_knowledge_graph": "library_management.library_management.api.search_knowledge_graph"
 }
 
 #

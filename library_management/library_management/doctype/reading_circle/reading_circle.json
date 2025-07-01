@@ -1,0 +1,348 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RC-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "circle_details_section",
+  "circle_name",
+  "circle_type",
+  "privacy_level",
+  "max_members",
+  "column_break_1",
+  "created_by",
+  "creation_date",
+  "status",
+  "current_members",
+  "book_selection_section",
+  "current_book",
+  "reading_schedule",
+  "discussion_frequency",
+  "column_break_2",
+  "reading_pace",
+  "book_selection_method",
+  "genre_focus",
+  "ai_features_section",
+  "ai_discussion_prompts",
+  "sentiment_analysis",
+  "reading_insights",
+  "column_break_3",
+  "auto_book_suggestions",
+  "smart_scheduling",
+  "engagement_score",
+  "social_features_section",
+  "discussion_threads",
+  "member_reviews",
+  "shared_notes",
+  "column_break_4",
+  "virtual_meetups",
+  "reading_challenges",
+  "achievement_badges",
+  "analytics_section",
+  "completion_rate",
+  "average_rating",
+  "discussion_activity",
+  "column_break_5",
+  "member_retention",
+  "book_diversity_score",
+  "engagement_trends"
+ ],
+ "fields": [
+  {
+   "fieldname": "circle_details_section",
+   "fieldtype": "Section Break",
+   "label": "Circle Details"
+  },
+  {
+   "fieldname": "circle_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Circle Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "circle_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Circle Type",
+   "options": "\nGeneral Fiction\nNon-Fiction\nScience Fiction\nMystery & Thriller\nRomance\nBiography\nSelf-Help\nAcademic\nYoung Adult\nChildren's Books\nPoetry\nGraphic Novels\nMixed Genre",
+   "reqd": 1
+  },
+  {
+   "default": "Public",
+   "fieldname": "privacy_level",
+   "fieldtype": "Select",
+   "label": "Privacy Level",
+   "options": "\nPublic\nPrivate\nInvite Only\nMembership Approval"
+  },
+  {
+   "default": "20",
+   "fieldname": "max_members",
+   "fieldtype": "Int",
+   "label": "Maximum Members"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "creation_date",
+   "fieldtype": "Date",
+   "label": "Creation Date"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nActive\nReading\nDiscussing\nBook Selection\nPaused\nCompleted\nArchived"
+  },
+  {
+   "default": "0",
+   "fieldname": "current_members",
+   "fieldtype": "Int",
+   "label": "Current Members",
+   "read_only": 1
+  },
+  {
+   "fieldname": "book_selection_section",
+   "fieldtype": "Section Break",
+   "label": "Book Selection & Schedule"
+  },
+  {
+   "fieldname": "current_book",
+   "fieldtype": "Link",
+   "label": "Current Book",
+   "options": "Book"
+  },
+  {
+   "fieldname": "reading_schedule",
+   "fieldtype": "Table",
+   "label": "Reading Schedule",
+   "options": "Reading Schedule Item"
+  },
+  {
+   "default": "Weekly",
+   "fieldname": "discussion_frequency",
+   "fieldtype": "Select",
+   "label": "Discussion Frequency",
+   "options": "\nDaily\nWeekly\nBi-weekly\nMonthly\nAs Needed"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Moderate",
+   "fieldname": "reading_pace",
+   "fieldtype": "Select",
+   "label": "Reading Pace",
+   "options": "\nSlow (1-2 chapters/week)\nModerate (3-5 chapters/week)\nFast (6-10 chapters/week)\nSpeed Reading (Book/week)"
+  },
+  {
+   "default": "Democratic Vote",
+   "fieldname": "book_selection_method",
+   "fieldtype": "Select",
+   "label": "Book Selection Method",
+   "options": "\nDemocratic Vote\nRotating Leader\nAI Recommendation\nRandom Selection\nThematic Selection\nAuthor Focus"
+  },
+  {
+   "fieldname": "genre_focus",
+   "fieldtype": "Text",
+   "label": "Genre Focus"
+  },
+  {
+   "fieldname": "ai_features_section",
+   "fieldtype": "Section Break",
+   "label": "AI-Powered Features"
+  },
+  {
+   "default": "1",
+   "fieldname": "ai_discussion_prompts",
+   "fieldtype": "Check",
+   "label": "AI Discussion Prompts"
+  },
+  {
+   "default": "1",
+   "fieldname": "sentiment_analysis",
+   "fieldtype": "Check",
+   "label": "Sentiment Analysis"
+  },
+  {
+   "fieldname": "reading_insights",
+   "fieldtype": "JSON",
+   "label": "AI Reading Insights"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_book_suggestions",
+   "fieldtype": "Check",
+   "label": "Auto Book Suggestions"
+  },
+  {
+   "default": "1",
+   "fieldname": "smart_scheduling",
+   "fieldtype": "Check",
+   "label": "Smart Scheduling"
+  },
+  {
+   "fieldname": "engagement_score",
+   "fieldtype": "Percent",
+   "label": "Engagement Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "social_features_section",
+   "fieldtype": "Section Break",
+   "label": "Social Features"
+  },
+  {
+   "fieldname": "discussion_threads",
+   "fieldtype": "Table",
+   "label": "Discussion Threads",
+   "options": "Discussion Thread Item"
+  },
+  {
+   "fieldname": "member_reviews",
+   "fieldtype": "Table",
+   "label": "Member Reviews",
+   "options": "Circle Member Review"
+  },
+  {
+   "fieldname": "shared_notes",
+   "fieldtype": "Table",
+   "label": "Shared Notes",
+   "options": "Shared Note Item"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "virtual_meetups",
+   "fieldtype": "Table",
+   "label": "Virtual Meetups",
+   "options": "Virtual Meetup Item"
+  },
+  {
+   "fieldname": "reading_challenges",
+   "fieldtype": "Table",
+   "label": "Reading Challenges",
+   "options": "Reading Challenge Item"
+  },
+  {
+   "fieldname": "achievement_badges",
+   "fieldtype": "JSON",
+   "label": "Achievement Badges"
+  },
+  {
+   "fieldname": "analytics_section",
+   "fieldtype": "Section Break",
+   "label": "Analytics & Insights"
+  },
+  {
+   "fieldname": "completion_rate",
+   "fieldtype": "Percent",
+   "label": "Book Completion Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "average_rating",
+   "fieldtype": "Float",
+   "label": "Average Book Rating",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discussion_activity",
+   "fieldtype": "Int",
+   "label": "Discussion Activity Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_retention",
+   "fieldtype": "Percent",
+   "label": "Member Retention Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "book_diversity_score",
+   "fieldtype": "Float",
+   "label": "Book Diversity Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "engagement_trends",
+   "fieldtype": "JSON",
+   "label": "Engagement Trends"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Reading Circle",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "circle_name,circle_type,status"
+}

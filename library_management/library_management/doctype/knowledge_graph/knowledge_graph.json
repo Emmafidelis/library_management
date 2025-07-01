@@ -1,0 +1,327 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "KG-.####",
+ "creation": "2024-12-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "entity_details_section",
+  "entity_name",
+  "entity_type",
+  "entity_id",
+  "confidence_score",
+  "column_break_1",
+  "source_book",
+  "extraction_method",
+  "last_updated",
+  "verification_status",
+  "relationships_section",
+  "related_entities",
+  "relationship_strength",
+  "semantic_connections",
+  "column_break_2",
+  "topic_clusters",
+  "concept_hierarchy",
+  "cross_references",
+  "nlp_analysis_section",
+  "sentiment_score",
+  "complexity_level",
+  "reading_level",
+  "column_break_3",
+  "key_themes",
+  "emotional_tone",
+  "writing_style",
+  "discovery_features_section",
+  "similar_concepts",
+  "related_books",
+  "learning_paths",
+  "column_break_4",
+  "prerequisite_knowledge",
+  "follow_up_topics",
+  "skill_development",
+  "ai_insights_section",
+  "ai_summary",
+  "knowledge_gaps",
+  "research_opportunities",
+  "column_break_5",
+  "trend_analysis",
+  "impact_score",
+  "citation_network"
+ ],
+ "fields": [
+  {
+   "fieldname": "entity_details_section",
+   "fieldtype": "Section Break",
+   "label": "Entity Details"
+  },
+  {
+   "fieldname": "entity_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Entity Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "entity_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Entity Type",
+   "options": "\nConcept\nPerson\nPlace\nEvent\nTheory\nMethod\nTechnology\nOrganization\nMovement\nPeriod\nGenre\nTheme\nSkill\nTopic",
+   "reqd": 1
+  },
+  {
+   "fieldname": "entity_id",
+   "fieldtype": "Data",
+   "label": "Unique Entity ID",
+   "unique": 1
+  },
+  {
+   "fieldname": "confidence_score",
+   "fieldtype": "Percent",
+   "label": "Confidence Score"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_book",
+   "fieldtype": "Link",
+   "label": "Source Book",
+   "options": "Book"
+  },
+  {
+   "fieldname": "extraction_method",
+   "fieldtype": "Select",
+   "label": "Extraction Method",
+   "options": "\nNLP Processing\nManual Entry\nAPI Import\nOCR Extraction\nUser Contribution\nAI Analysis\nCrowdsourcing"
+  },
+  {
+   "default": "Today",
+   "fieldname": "last_updated",
+   "fieldtype": "Datetime",
+   "label": "Last Updated"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "label": "Verification Status",
+   "options": "\nPending\nVerified\nNeedsReview\nRejected\nAutoVerified"
+  },
+  {
+   "fieldname": "relationships_section",
+   "fieldtype": "Section Break",
+   "label": "Relationships & Connections"
+  },
+  {
+   "fieldname": "related_entities",
+   "fieldtype": "Table",
+   "label": "Related Entities",
+   "options": "Knowledge Graph Relation"
+  },
+  {
+   "fieldname": "relationship_strength",
+   "fieldtype": "JSON",
+   "label": "Relationship Strength Matrix"
+  },
+  {
+   "fieldname": "semantic_connections",
+   "fieldtype": "JSON",
+   "label": "Semantic Connections"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "topic_clusters",
+   "fieldtype": "JSON",
+   "label": "Topic Clusters"
+  },
+  {
+   "fieldname": "concept_hierarchy",
+   "fieldtype": "JSON",
+   "label": "Concept Hierarchy"
+  },
+  {
+   "fieldname": "cross_references",
+   "fieldtype": "Table",
+   "label": "Cross References",
+   "options": "Cross Reference Item"
+  },
+  {
+   "fieldname": "nlp_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "NLP Analysis"
+  },
+  {
+   "fieldname": "sentiment_score",
+   "fieldtype": "Float",
+   "label": "Sentiment Score"
+  },
+  {
+   "fieldname": "complexity_level",
+   "fieldtype": "Select",
+   "label": "Complexity Level",
+   "options": "\nBeginner\nIntermediate\nAdvanced\nExpert\nResearch Level"
+  },
+  {
+   "fieldname": "reading_level",
+   "fieldtype": "Select",
+   "label": "Reading Level",
+   "options": "\nElementary\nMiddle School\nHigh School\nCollege\nGraduate\nProfessional"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "key_themes",
+   "fieldtype": "JSON",
+   "label": "Key Themes"
+  },
+  {
+   "fieldname": "emotional_tone",
+   "fieldtype": "JSON",
+   "label": "Emotional Tone Analysis"
+  },
+  {
+   "fieldname": "writing_style",
+   "fieldtype": "JSON",
+   "label": "Writing Style Metrics"
+  },
+  {
+   "fieldname": "discovery_features_section",
+   "fieldtype": "Section Break",
+   "label": "Discovery Features"
+  },
+  {
+   "fieldname": "similar_concepts",
+   "fieldtype": "Table",
+   "label": "Similar Concepts",
+   "options": "Similar Concept Item"
+  },
+  {
+   "fieldname": "related_books",
+   "fieldtype": "Table",
+   "label": "Related Books",
+   "options": "Related Book Item"
+  },
+  {
+   "fieldname": "learning_paths",
+   "fieldtype": "Table",
+   "label": "Learning Paths",
+   "options": "Learning Path Item"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prerequisite_knowledge",
+   "fieldtype": "Table",
+   "label": "Prerequisite Knowledge",
+   "options": "Prerequisite Item"
+  },
+  {
+   "fieldname": "follow_up_topics",
+   "fieldtype": "Table",
+   "label": "Follow-up Topics",
+   "options": "Follow Up Topic Item"
+  },
+  {
+   "fieldname": "skill_development",
+   "fieldtype": "JSON",
+   "label": "Skill Development Map"
+  },
+  {
+   "fieldname": "ai_insights_section",
+   "fieldtype": "Section Break",
+   "label": "AI Insights"
+  },
+  {
+   "fieldname": "ai_summary",
+   "fieldtype": "Text Editor",
+   "label": "AI Generated Summary"
+  },
+  {
+   "fieldname": "knowledge_gaps",
+   "fieldtype": "JSON",
+   "label": "Identified Knowledge Gaps"
+  },
+  {
+   "fieldname": "research_opportunities",
+   "fieldtype": "JSON",
+   "label": "Research Opportunities"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trend_analysis",
+   "fieldtype": "JSON",
+   "label": "Trend Analysis"
+  },
+  {
+   "fieldname": "impact_score",
+   "fieldtype": "Float",
+   "label": "Knowledge Impact Score"
+  },
+  {
+   "fieldname": "citation_network",
+   "fieldtype": "JSON",
+   "label": "Citation Network"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Knowledge Graph",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Library Member",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "entity_name,entity_type,source_book"
+}
